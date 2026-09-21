@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Fish Hoek Athletic Club - concept website and race entry platform. Prepared by iHubSA.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Fish Hoek AC - Concept Prototype">
+<meta property="og:description" content="Proposed website and race entry platform for Fish Hoek Athletic Club.">
+<meta property="og:type" content="website">
+<style>
+/* base reset (supplied by the artifact host in the hosted version) */
+html{color-scheme:dark}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Fish Hoek AC Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+
+<style>
+:root{
+  --ink:#0A0D13; --ink2:#111825; --ink3:#18202F; --ink4:#1F2939;
+  --line:#26314400; --line1:#263144; --line2:#31405A;
+  --gold:#F2CE00; --gold2:#C9AB00; --gold-soft:#F2CE0022;
+  --red:#D8231E; --red-soft:#D8231E22;
+  --chalk:#EDEFF4; --mute:#8D97AB; --mute2:#5F6B80;
+  --good:#3DD68C; --warn:#F5A524; --crit:#FF5C57;
+  --disp:"Big Shoulders Display","Haettenschweiler","Arial Narrow",sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",monospace;
+  --gut:clamp(16px,4vw,48px);
+  --maxw:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ink); color:var(--chalk);
+  font-family:var(--body); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- type ---------- */
+.d1,.d2,.d3,.d4{font-family:var(--disp);font-weight:800;text-transform:uppercase;line-height:.92;letter-spacing:.005em;text-wrap:balance;margin:0}
+.d1{font-size:clamp(46px,9.5vw,104px)}
+.d2{font-size:clamp(34px,6vw,64px)}
+.d3{font-size:clamp(26px,4vw,40px)}
+.d4{font-size:clamp(20px,2.6vw,26px);font-weight:700}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0}
+.eyebrow.m{color:var(--mute)}
+.lead{font-size:clamp(16px,1.9vw,19px);color:#C3CAD7;max-width:62ch;margin:0}
+p{margin:0}
+.muted{color:var(--mute)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- layout ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+section.band{padding-block:clamp(56px,8vw,104px)}
+.stack{display:flex;flex-direction:column}
+.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
+.row{display:flex;flex-wrap:wrap;align-items:center}
+.grid{display:grid;gap:clamp(16px,2.2vw,24px)}
+.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:860px){.c3,.c4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.c2,.c3,.c4{grid-template-columns:minmax(0,1fr)}}
+.hr{height:1px;background:var(--line1);border:0;margin:0}
+
+/* ---------- header ---------- */
+header.top{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:60;
+  background:rgba(10,13,19,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line1);
+}
+.topin{display:flex;align-items:center;gap:20px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:0 0 auto}
+.brand .nm{font-family:var(--disp);font-weight:800;font-size:19px;text-transform:uppercase;line-height:1;letter-spacing:.01em}
+.brand .nm small{display:block;font-family:var(--mono);font-size:8.5px;font-weight:500;letter-spacing:.2em;color:var(--mute);margin-top:3px}
+nav.main{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+nav.main::-webkit-scrollbar{display:none}
+nav.main button{
+  background:none;border:0;padding:8px 12px;border-radius:6px;white-space:nowrap;
+  font-size:13.5px;font-weight:500;color:#AEB7C6;transition:color .15s,background .15s;
+}
+nav.main button:hover{color:var(--chalk);background:var(--ink3)}
+nav.main button[aria-current="page"]{color:var(--gold);background:var(--gold-soft)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;border:0;border-radius:6px;
+  padding:11px 18px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;
+  transition:transform .12s,filter .15s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-gold{background:var(--gold);color:#0A0D13}
+.btn-gold:hover{filter:brightness(1.08)}
+.btn-ghost{background:transparent;color:var(--chalk);box-shadow:inset 0 0 0 1px var(--line2)}
+.btn-ghost:hover{background:var(--ink3)}
+.btn-sm{padding:8px 13px;font-size:13px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+@media(max-width:760px){.topin{height:58px;gap:12px}.brand .nm{font-size:16px}.topin .btn{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 80% at 78% 0%, #1B2637 0%, transparent 62%),
+  radial-gradient(90% 70% at 8% 100%, #1A1608 0%, transparent 60%), var(--ink);
+  border-bottom:1px solid var(--line1)}
+.hero .wrap{position:relative;z-index:2;padding-block:clamp(52px,8vw,88px) clamp(150px,20vw,200px)}
+.ridge{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;z-index:1;pointer-events:none}
+.ridge path.fill{fill:url(#rg)}
+.ridge path.stroke{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.hero h1{margin:14px 0 0;max-width:15ch}
+.hero .lead{margin-top:20px}
+.hero .cta{margin-top:30px;gap:12px}
+.ridgekey{position:absolute;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.ridgekey b{display:block;color:var(--gold);font-size:11px;letter-spacing:.06em}
+.rk-a{left:var(--gut);bottom:14px}
+.rk-b{right:var(--gut);bottom:14px;text-align:right}
+@media(max-width:620px){.rk-b{display:none}}
+
+/* ---------- stat strip ---------- */
+.strip{background:var(--ink2);border-bottom:1px solid var(--line1)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line1)}
+.stat{background:var(--ink2);padding:22px 4px 22px 0}
+.stat .v{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.4vw,42px);line-height:1;color:var(--gold)}
+.stat .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:7px}
+@media(max-width:700px){.strip .wrap{grid-template-columns:repeat(2,1fr)}.stat{padding:18px 4px}}
+
+/* ---------- surfaces ---------- */
+.panel{background:var(--ink2);border:1px solid var(--line1);border-radius:10px}
+.panel.pad{padding:clamp(20px,3vw,30px)}
+.raised{background:var(--ink3)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:clamp(24px,3.5vw,38px)}
+
+/* race cards */
+.race{display:flex;flex-direction:column;background:var(--ink2);border:1px solid var(--line1);border-radius:10px;overflow:hidden;transition:border-color .18s,transform .18s}
+.race:hover{border-color:var(--line2);transform:translateY(-3px)}
+.race .prof{display:block;width:100%;height:78px;background:linear-gradient(180deg,#0E1420,#141C2B);border-bottom:1px solid var(--line1)}
+.race .prof path.f{fill:var(--gold-soft)}
+.race .prof path.s{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.race .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.race h3{margin:0;font-family:var(--disp);font-weight:800;font-size:25px;text-transform:uppercase;line-height:1}
+.race .meta{display:flex;flex-wrap:wrap;gap:6px}
+.race p{font-size:14px;color:var(--mute);line-height:1.55}
+.race .foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line1);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:4px;background:var(--ink4);color:#AEB7C6;white-space:nowrap}
+.chip.gold{background:var(--gold-soft);color:var(--gold)}
+.chip.red{background:var(--red-soft);color:#FF8B87}
+.chip.good{background:#3DD68C1F;color:var(--good)}
+.chip.warn{background:#F5A5241F;color:var(--warn)}
+.chip.mute{background:#8D97AB1A;color:var(--mute)}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:0 0 auto}
+
+/* tiles */
+.tile{background:var(--ink2);border:1px solid var(--line1);border-radius:10px;padding:20px}
+.tile .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.tile .v{font-family:var(--disp);font-weight:800;font-size:40px;line-height:1;margin-top:10px}
+.tile .sub{font-size:12.5px;color:var(--mute);margin-top:6px;display:flex;align-items:center;gap:6px}
+.tile.accent{border-left:3px solid var(--gold)}
+
+/* list rows */
+.lrow{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line1)}
+.lrow:last-child{border-bottom:0}
+.lrow .t{font-weight:600;font-size:14.5px}
+.lrow .s{font-size:12.5px;color:var(--mute)}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line1);border-radius:10px;background:var(--ink2)}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);text-align:left;padding:13px 16px;border-bottom:1px solid var(--line1);background:var(--ink3);white-space:nowrap}
+td{padding:13px 16px;border-bottom:1px solid var(--line1);font-size:14px;vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody tr.clickable{cursor:pointer}
+tbody tr.clickable:hover{background:var(--ink3)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* forms */
+label.f{display:flex;flex-direction:column;gap:7px;font-size:12.5px;font-weight:600;color:#AEB7C6}
+label.f .hint{font-weight:400;color:var(--mute2);font-size:11.5px}
+input.i,select.i,textarea.i{
+  width:100%;background:var(--ink);border:1px solid var(--line2);border-radius:7px;
+  padding:11px 13px;color:var(--chalk);font:inherit;font-size:14.5px;
+}
+input.i:focus,select.i:focus,textarea.i:focus{border-color:var(--gold);outline:none}
+input.i::placeholder{color:var(--mute2)}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:15px;border:1px solid var(--line2);border-radius:9px;background:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--mute2)}
+.opt input{margin:3px 0 0;accent-color:var(--gold);flex:0 0 auto;width:16px;height:16px}
+.opt.sel{border-color:var(--gold);background:#F2CE000D}
+.opt .ot{font-weight:600;font-size:14.5px}
+.opt .os{font-size:12.5px;color:var(--mute);margin-top:3px}
+.opt .price{margin-left:auto;font-family:var(--mono);font-weight:600;font-size:15px;color:var(--gold);white-space:nowrap}
+
+/* stepper */
+.steps{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line1);margin-bottom:28px}
+.steps::-webkit-scrollbar{display:none}
+.step{display:flex;align-items:center;gap:9px;padding:0 18px 14px 0;white-space:nowrap;color:var(--mute2);font-size:13px;font-weight:500}
+.step .b{width:23px;height:23px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:11px;font-weight:600;background:var(--ink3);color:var(--mute);flex:0 0 auto}
+.step.done{color:#AEB7C6}
+.step.done .b{background:#3DD68C22;color:var(--good)}
+.step.now{color:var(--gold)}
+.step.now .b{background:var(--gold);color:#0A0D13}
+
+/* charts */
+.bar{height:9px;border-radius:5px;background:var(--ink4);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:5px;background:var(--gold)}
+.bar i.g{background:var(--good)}
+.bar i.r{background:var(--red)}
+.bar i.w{background:var(--warn)}
+
+/* pages */
+.page{display:none}
+.page.on{display:block;animation:fi .28s ease-out}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* callout */
+.note{display:flex;gap:12px;padding:15px 17px;border-radius:9px;background:var(--ink3);border-left:3px solid var(--gold);font-size:13.5px;color:#C3CAD7}
+.note.red{border-left-color:var(--red)}
+.note.good{border-left-color:var(--good)}
+
+/* footer */
+footer.site{background:var(--ink2);border-top:1px solid var(--line1);padding-block:52px 34px;margin-top:0}
+footer.site a{color:var(--mute);text-decoration:none;font-size:13.5px}
+footer.site a:hover{color:var(--gold)}
+.fcol h4{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute2);margin:0 0 13px;font-weight:500}
+.fcol div{display:flex;flex-direction:column;gap:9px}
+.fbot{margin-top:38px;padding-top:22px;border-top:1px solid var(--line1);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px;color:var(--mute2)}
+
+/* proto ribbon */
+.ribbon{background:linear-gradient(90deg,#1A1608,#111825);border-bottom:1px solid var(--line1);font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--mute)}
+.ribbon .wrap{display:flex;gap:10px;align-items:center;padding-block:9px;flex-wrap:wrap}
+.ribbon b{color:var(--gold);font-weight:600}
+</style>
+
+</head>
+<body>
+<div class="ribbon"><div class="wrap">
+  <span class="dot" style="color:var(--gold)"></span>
+  <b>CONCEPT PROTOTYPE</b>
+  <span>Fish Hoek Athletic Club &mdash; proposed site &amp; race entry platform. Content drawn from the live club site; figures are illustrative.</span>
+</div></div>
+
+<header class="top"><div class="wrap topin">
+  <a class="brand" href="#" data-go="home" aria-label="Fish Hoek Athletic Club home">
+    <svg width="30" height="36" viewBox="0 0 30 36" aria-hidden="true">
+      <path d="M1.2 1.2h27.6v20.5c0 7.2-6.6 11.2-13.8 13.1C7.8 32.9 1.2 28.9 1.2 21.7Z" fill="#141C2B" stroke="#F2CE00" stroke-width="2"/>
+      <path d="M4.4 4.4h21.2v6.4H4.4Z" fill="#F2CE00"/>
+      <path d="M4.4 13.6h21.2v5.2H4.4Z" fill="#D8231E"/>
+      <path d="M5 26.5c3.4-4 6.2-4 9 0 2.8 4 5.6 4 9 0" fill="none" stroke="#F2CE00" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="nm">Fish Hoek AC<small>Est. 1977</small></span>
+  </a>
+  <nav class="main" id="nav" aria-label="Main">
+    <button data-go="home" aria-current="page">Home</button>
+    <button data-go="about">About</button>
+    <button data-go="races">Races &amp; Runs</button>
+    <button data-go="join">Join</button>
+    <button data-go="results">Results</button>
+    <button data-go="volunteer">Volunteer</button>
+    <button data-go="admin">Organiser</button>
+    <button data-go="contact">Contact</button>
+  </nav>
+  <a class="btn btn-gold" href="#" data-go="enter">Enter a race</a>
+</div></header>
+
+<main id="main">
+
+<!-- ═══════════════ HOME ═══════════════ -->
+<div class="page on" id="p-home">
+
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Fish Hoek Athletic Club &middot; Western Province Athletics</p>
+      <h1 class="d1">From the<br>valley to<br>the mountain</h1>
+      <p class="lead">Since 1977 we've run the deep south &mdash; Wednesday time trials on Nelson Road, Saturday long runs over Ou Kaapse Weg, and a 65&nbsp;km ultra that starts at Cape Point and finishes on top of Table Mountain.</p>
+      <div class="row cta">
+        <a class="btn btn-gold" href="#" data-go="enter">Enter PUFfeR 2027</a>
+        <a class="btn btn-ghost" href="#" data-go="join">Join the club</a>
+      </div>
+    </div>
+    <svg class="ridge" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-label="Elevation profile of the Peninsula Ultra Fun Run, from Cape Point at sea level to Maclear's Beacon at 1086 metres and down to the Waterfront">
+      <defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#F2CE00" stop-opacity=".20"/>
+        <stop offset="1" stop-color="#F2CE00" stop-opacity="0"/>
+      </linearGradient></defs>
+      <path class="fill" d="M0,193.5 46,177 92,186 154,147 215,165 277,177 338,135 400,117 462,150 523,93 585,56 646,105 708,159 769,90 831,45 862,32 908,90 954,150 1000,194 L1000,200 L0,200 Z"/>
+      <path class="stroke" d="M0,193.5 46,177 92,186 154,147 215,165 277,177 338,135 400,117 462,150 523,93 585,56 646,105 708,159 769,90 831,45 862,32 908,90 954,150 1000,194"/>
+      <circle cx="862" cy="32" r="4" fill="#D8231E" stroke="#0A0D13" stroke-width="2"/>
+    </svg>
+    <div class="ridgekey rk-a"><b>Cape Point</b>0 km &middot; sea level</div>
+    <div class="ridgekey rk-b"><b>Maclear's Beacon</b>56 km &middot; 1 086 m</div>
+  </div>
+
+  <div class="strip"><div class="wrap">
+    <div class="stat"><div class="v num">1977</div><div class="k">Founded in Fish&nbsp;Hoek</div></div>
+    <div class="stat"><div class="v num">65 km</div><div class="k">PUFfeR, Cape Point to town</div></div>
+    <div class="stat"><div class="v num">180</div><div class="k">PUFfeR entry cap</div></div>
+    <div class="stat"><div class="v num">18:15</div><div class="k">Wednesday time trial</div></div>
+  </div></div>
+
+  <section class="band"><div class="wrap">
+    <div class="grid c2" style="align-items:start;gap:clamp(24px,4vw,56px)">
+      <div class="stack g24">
+        <div>
+          <p class="eyebrow">This week at the club</p>
+          <h2 class="d2" style="margin-top:12px">Wednesday<br>night, Nelson&nbsp;Road</h2>
+        </div>
+        <p class="lead">The time trial is the heart of the club and it's open to anyone who walks up &mdash; member or not. Children run a closed 2&nbsp;km loop inside the sports fields first, then the adult distances go off together.</p>
+        <p class="muted" style="font-size:14.5px">Afterwards everyone ends up at the clubhouse. You're welcome to pop in for a chat, a run, a drink, or all three.</p>
+        <div class="row" style="gap:10px">
+          <a class="btn btn-ghost btn-sm" href="#" data-go="contact">Find the club</a>
+          <a class="btn btn-ghost btn-sm" href="#" data-go="races">See all runs</a>
+        </div>
+      </div>
+
+      <div class="panel pad stack g16">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <div class="eyebrow m">Wednesday 23 September</div>
+            <div class="d4" style="margin-top:6px">Time trial</div>
+          </div>
+          <span class="chip good"><span class="dot"></span>On tonight</span>
+        </div>
+        <hr class="hr">
+        <div>
+          <div class="lrow">
+            <span class="num" style="color:var(--gold);font-weight:600;width:52px">17:30</span>
+            <span style="flex:1"><span class="t">Junior loop</span><br><span class="s">2 km, closed circuit inside the fields</span></span>
+            <span class="chip">U13</span>
+          </div>
+          <div class="lrow">
+            <span class="num" style="color:var(--gold);font-weight:600;width:52px">18:15</span>
+            <span style="flex:1"><span class="t">Adult time trial</span><br><span class="s">Pick your distance at the start line</span></span>
+            <span class="row" style="gap:5px"><span class="chip">3 km</span><span class="chip">5 km</span><span class="chip">8 km</span></span>
+          </div>
+          <div class="lrow">
+            <span class="num" style="color:var(--mute);font-weight:600;width:52px">Sat</span>
+            <span style="flex:1"><span class="t">Long run &mdash; Silvermine</span><br><span class="s">17 km, meet 06:00 at the clubhouse</span></span>
+            <span class="chip mute">Social</span>
+          </div>
+        </div>
+        <div class="note">Time trial results feed straight into your <b style="color:var(--gold)">club standards</b> tally &mdash; you can see where you stand in the members' portal the next morning.</div>
+      </div>
+    </div>
+  </div></section>
+
+  <hr class="hr">
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Our races</p>
+        <h2 class="d2" style="margin-top:12px">Four runs we're known for</h2>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="#" data-go="races">All races &amp; runs</a>
+    </div>
+    <div class="grid c4" id="raceCards"></div>
+  </div></section>
+
+  <hr class="hr">
+
+  <section class="band"><div class="wrap">
+    <div class="grid c2" style="gap:clamp(24px,4vw,56px);align-items:center">
+      <div class="stack g20" style="gap:20px">
+        <p class="eyebrow">Race entries, run properly</p>
+        <h2 class="d2">One system for<br>entries, results<br>and volunteers</h2>
+        <p class="lead">Every FHAC event on one platform: runners enter and pay online, the organiser watches entries in real time, checkpoint volunteers book their own slot, and results go live the moment the last runner is off the mountain.</p>
+        <div class="row" style="gap:10px">
+          <a class="btn btn-gold btn-sm" href="#" data-go="enter">Try the entry flow</a>
+          <a class="btn btn-ghost btn-sm" href="#" data-go="admin">See the organiser view</a>
+        </div>
+      </div>
+      <div class="grid c2" style="gap:14px">
+        <div class="tile accent"><div class="k">Entries &mdash; PUFfeR</div><div class="v num" style="color:var(--gold)">164<span style="font-size:20px;color:var(--mute2)">/180</span></div><div class="sub"><span class="chip warn">16 left</span></div></div>
+        <div class="tile"><div class="k">Paid in full</div><div class="v num">R 147k</div><div class="sub"><span style="color:var(--good)">&#9650; R 22k</span> this week</div></div>
+        <div class="tile"><div class="k">Checkpoint slots</div><div class="v num">78<span style="font-size:20px;color:var(--mute2)">/96</span></div><div class="sub">18 still to fill</div></div>
+        <div class="tile"><div class="k">Qualifiers verified</div><div class="v num">151</div><div class="sub">13 awaiting proof</div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <hr class="hr">
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Membership</p>
+        <h2 class="d2" style="margin-top:12px">Run with us</h2>
+      </div>
+      <a class="btn btn-gold btn-sm" href="#" data-go="join">Join the club</a>
+    </div>
+    <div class="grid c4" id="memCards"></div>
+    <p class="muted" style="font-size:13px;margin-top:18px">All running members also need a Western Province Athletics licence (R140 senior). Club kit R250 per item.</p>
+  </div></section>
+</div>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<div class="page" id="p-about">
+  <section class="band" style="padding-bottom:clamp(30px,4vw,44px)"><div class="wrap stack g24">
+    <p class="eyebrow">About the club</p>
+    <h1 class="d2">A strong family ethos,<br>and a mountain on<br>the doorstep</h1>
+    <p class="lead">FHAC sits in the Fish Hoek valley. We back participation over victory at any cost &mdash; and from that, members have still gone on to represent the province and the country.</p>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="wrap">
+    <div class="grid c2" style="gap:clamp(24px,4vw,48px);align-items:start">
+      <div class="panel pad stack g16">
+        <p class="eyebrow m">September 1977</p>
+        <h3 class="d3">How it started</h3>
+        <p style="font-size:15px;color:#C3CAD7">Four people founded the club: <b>DJ&nbsp;Price</b>, <b>Don&nbsp;Holgate</b>, <b>Paddy&nbsp;Mills</b> and <b>Bert&nbsp;Thompson</b>. Getting registered took some creative problem-solving &mdash; there weren't enough runners in the valley to meet the requirement, so they found some.</p>
+        <p style="font-size:15px;color:#C3CAD7">By 1978 the club had launched the South-Easter Fun Run, the first fun run in the area. What began as a cross-country and short-distance club now covers every distance and discipline: road, trail, cross-country, walking and triathlon.</p>
+      </div>
+      <div class="stack g16">
+        <div class="panel pad stack g12">
+          <p class="eyebrow m">Our aim</p>
+          <p style="font-size:17px;line-height:1.5">&ldquo;To promote athletics as a sport with a view to the optimal development of the athletics potential residing within our community.&rdquo;</p>
+        </div>
+        <div class="panel pad stack g12">
+          <p class="eyebrow m">Committee</p>
+          <div>
+            <div class="lrow"><span style="flex:1"><span class="t">Russell Mackintosh</span></span><span class="s">Chairman</span></div>
+            <div class="lrow"><span style="flex:1"><span class="t">Collette</span></span><span class="s">President</span></div>
+            <div class="lrow"><span style="flex:1"><span class="t">Moira Oliver</span></span><span class="s">Secretary</span></div>
+            <div class="lrow"><span style="flex:1"><span class="t">Tina Heppe</span></span><span class="s">Membership</span></div>
+          </div>
+          <p class="muted" style="font-size:12.5px">Plus coordinators for trail, long distance and short course.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <hr class="hr">
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">Club standards</p>
+      <h2 class="d2" style="margin-top:12px">Five tiers, four races,<br>one year</h2>
+    </div></div>
+    <div class="grid c2" style="gap:clamp(24px,4vw,48px);align-items:start">
+      <div class="stack g16">
+        <p class="lead">Run four of the eight recognised distances between 1 November and 31 October and you'll be awarded at the annual awards evening. The tier you receive is the <b>lowest</b> of your four qualifying performances &mdash; so the weakest run sets the award.</p>
+        <div class="note">Only official ASA events and FHAC time trials count. parkrun and other clubs' time trials do not. Races run outside Western Province should be sent to the standards coordinator yourself.</div>
+      </div>
+      <div class="panel pad stack g16">
+        <p class="eyebrow m">Qualifying distances</p>
+        <div class="row" style="gap:7px">
+          <span class="chip gold">5 km</span><span class="chip gold">8 km</span><span class="chip gold">10 km</span>
+          <span class="chip gold">15 km</span><span class="chip gold">21.1 km</span><span class="chip gold">32 km</span>
+          <span class="chip gold">42.2 km</span><span class="chip gold">Two Oceans Ultra</span>
+        </div>
+        <hr class="hr">
+        <p class="eyebrow m">Award tiers</p>
+        <div class="stack g8">
+          <div class="row" style="gap:12px"><span class="chip" style="width:104px;justify-content:center;background:#8B5A2B33;color:#D9A066">Bronze</span><div class="bar" style="flex:1"><i style="width:22%;background:#D9A066"></i></div></div>
+          <div class="row" style="gap:12px"><span class="chip" style="width:104px;justify-content:center;background:#8D97AB2E;color:#C3CAD7">Silver</span><div class="bar" style="flex:1"><i style="width:42%;background:#C3CAD7"></i></div></div>
+          <div class="row" style="gap:12px"><span class="chip gold" style="width:104px;justify-content:center">Gold</span><div class="bar" style="flex:1"><i style="width:62%"></i></div></div>
+          <div class="row" style="gap:12px"><span class="chip red" style="width:104px;justify-content:center">Club Colours</span><div class="bar" style="flex:1"><i class="r" style="width:82%"></i></div></div>
+          <div class="row" style="gap:12px"><span class="chip good" style="width:104px;justify-content:center">Provincial</span><div class="bar" style="flex:1"><i class="g" style="width:100%"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════ RACES ═══════════════ -->
+<div class="page" id="p-races">
+  <section class="band" style="padding-bottom:clamp(28px,4vw,40px)"><div class="wrap stack g24">
+    <p class="eyebrow">Races &amp; runs</p>
+    <h1 class="d2">Four races, and<br>a weekly ritual</h1>
+    <p class="lead">Our commemorative runs aren't mass-participation events. They're hard, they're old, and most of them come with conditions.</p>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="wrap stack g24" id="raceLong"></div></section>
+
+  <hr class="hr">
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head"><div>
+      <p class="eyebrow">Week in, week out</p>
+      <h2 class="d2" style="margin-top:12px">Club training</h2>
+    </div></div>
+    <div class="grid c3">
+      <div class="panel pad stack g12">
+        <span class="chip gold">Wednesday</span>
+        <h3 class="d4">Time trial</h3>
+        <p class="muted" style="font-size:14px">17:30 junior 2&nbsp;km loop, 18:15 adults over 3, 5 or 8&nbsp;km. Fish Hoek sports fields, Nelson Road. Open to visitors.</p>
+      </div>
+      <div class="panel pad stack g12">
+        <span class="chip gold">Saturday</span>
+        <h3 class="d4">Long run</h3>
+        <p class="muted" style="font-size:14px">13 to 20&nbsp;km, route and meeting point rotate through the valley &mdash; Silvermine, Ou Kaapse Weg, Simon's Town, Chapman's Peak.</p>
+      </div>
+      <div class="panel pad stack g12">
+        <span class="chip mute">Midweek</span>
+        <h3 class="d4">Speed &amp; hills</h3>
+        <p class="muted" style="font-size:14px">Informal sessions through the week. Structured programmes run for 10&nbsp;km, half marathon, marathon, and an 18-week Two Oceans build.</p>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════ JOIN ═══════════════ -->
+<div class="page" id="p-join">
+  <section class="band" style="padding-bottom:clamp(28px,4vw,40px)"><div class="wrap stack g24">
+    <p class="eyebrow">Membership 2026/27</p>
+    <h1 class="d2">Join Fish Hoek AC</h1>
+    <p class="lead">Membership runs to the end of the club year. Pick a category, add a WPA licence if you'll be racing, and pay online &mdash; no more catching the membership officer on a Wednesday evening.</p>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="wrap">
+    <div class="grid" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,3vw,36px);align-items:start" id="joinGrid">
+      <div class="panel pad stack g24">
+        <div>
+          <p class="eyebrow m">Step 1</p>
+          <h3 class="d4" style="margin-top:6px">Choose your category</h3>
+        </div>
+        <div class="stack g12" id="memOpts"></div>
+
+        <hr class="hr">
+        <div>
+          <p class="eyebrow m">Step 2</p>
+          <h3 class="d4" style="margin-top:6px">Add-ons</h3>
+        </div>
+        <div class="stack g12">
+          <label class="opt sel" id="optLic">
+            <input type="checkbox" id="cbLic" checked>
+            <span style="flex:1"><span class="ot">Western Province Athletics licence</span><span class="os">Required to race any official ASA event. Senior rate.</span></span>
+            <span class="price">R 140</span>
+          </label>
+          <label class="opt" id="optKit">
+            <input type="checkbox" id="cbKit">
+            <span style="flex:1"><span class="ot">Club vest</span><span class="os">Gold and red. Sizing on Wednesday nights at the clubhouse.</span></span>
+            <span class="price">R 250</span>
+          </label>
+        </div>
+
+        <hr class="hr">
+        <div>
+          <p class="eyebrow m">Step 3</p>
+          <h3 class="d4" style="margin-top:6px">Your details</h3>
+        </div>
+        <div class="grid c2" style="gap:14px">
+          <label class="f" for="jFirst">First name<input class="i" id="jFirst" placeholder="Thandi"></label>
+          <label class="f" for="jLast">Surname<input class="i" id="jLast" placeholder="Mokoena"></label>
+          <label class="f" for="jEmail">Email<input class="i" id="jEmail" type="email" placeholder="you@example.co.za"></label>
+          <label class="f" for="jCell">Mobile<input class="i" id="jCell" placeholder="082 000 0000"></label>
+          <label class="f" for="jDob">Date of birth <span class="hint">Sets your age category</span><input class="i" id="jDob" type="date" value="1988-04-12"></label>
+          <label class="f" for="jEmg">Emergency contact<input class="i" id="jEmg" placeholder="Name and number"></label>
+        </div>
+      </div>
+
+      <div class="panel pad stack g16" style="position:sticky;top:96px">
+        <p class="eyebrow m">Your membership</p>
+        <div class="stack g12" id="joinSummary"></div>
+        <hr class="hr">
+        <div class="row" style="justify-content:space-between;align-items:baseline">
+          <span style="font-weight:600">Total due</span>
+          <span class="d3" style="color:var(--gold)" id="joinTotal">R 640</span>
+        </div>
+        <button class="btn btn-gold" style="justify-content:center;width:100%" id="joinPay">Pay with PayFast</button>
+        <p class="muted" style="font-size:11.5px;text-align:center">Card, instant EFT or SnapScan. Your licence number is issued by WPA within 48 hours.</p>
+        <div class="note good" id="joinDone" hidden>Membership confirmed. A welcome email and your WPA licence application are on their way.</div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════ ENTER (registration flow) ═══════════════ -->
+<div class="page" id="p-enter">
+  <section class="band" style="padding-bottom:clamp(24px,3vw,32px)"><div class="wrap">
+    <div class="row" style="justify-content:space-between;gap:16px;align-items:flex-end">
+      <div class="stack g12">
+        <p class="eyebrow">Race entry</p>
+        <h1 class="d2">Peninsula Ultra<br>Fun Run 2027</h1>
+        <div class="row" style="gap:7px">
+          <span class="chip gold">65 km</span><span class="chip">Sat 16 Oct 2027</span>
+          <span class="chip">Cape Point &rarr; Waterfront</span><span class="chip warn">16 places left</span>
+        </div>
+      </div>
+      <div class="panel pad" style="min-width:200px">
+        <div class="eyebrow m">Entries close</div>
+        <div class="d3 num" style="margin-top:6px;color:var(--gold)">21 days</div>
+        <div class="muted" style="font-size:12.5px;margin-top:4px">or when the 180th entry lands</div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band" style="padding-top:0;padding-bottom:clamp(60px,8vw,90px)"><div class="wrap">
+    <div class="steps" id="entSteps">
+      <div class="step now" data-s="1"><span class="b">1</span>Event</div>
+      <div class="step" data-s="2"><span class="b">2</span>Runner</div>
+      <div class="step" data-s="3"><span class="b">3</span>Qualifier &amp; volunteer</div>
+      <div class="step" data-s="4"><span class="b">4</span>Indemnity</div>
+      <div class="step" data-s="5"><span class="b">5</span>Payment</div>
+    </div>
+
+    <div class="grid" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,3vw,36px);align-items:start" id="entGrid">
+      <div class="panel pad stack g24" style="min-height:440px">
+
+        <div class="estep" data-s="1">
+          <div class="stack g16">
+            <h3 class="d4">Which event are you entering?</h3>
+            <div class="stack g12" id="evOpts"></div>
+            <div class="note red"><span><b style="color:#FF8B87">PUFfeR is not an open race.</b> You must have finished an ultra of 50&nbsp;km or more in the six months before race day, have real mountain running experience, attend the pre-race briefing, and nominate a volunteer for checkpoint duty.</span></div>
+          </div>
+        </div>
+
+        <div class="estep" data-s="2" hidden>
+          <div class="stack g16">
+            <h3 class="d4">Runner details</h3>
+            <div class="grid c2" style="gap:14px">
+              <label class="f" for="eFirst">First name<input class="i" id="eFirst" value="Thandi"></label>
+              <label class="f" for="eLast">Surname<input class="i" id="eLast" value="Mokoena"></label>
+              <label class="f" for="eClub">Club<input class="i" id="eClub" value="Fish Hoek AC"></label>
+              <label class="f" for="eLicence">ASA / WPA licence number <span class="hint">Checked against the WPA register</span><input class="i num" id="eLicence" value="WPA 24 118 907"></label>
+              <label class="f" for="eDob">Date of birth<input class="i" id="eDob" type="date" value="1988-04-12"></label>
+              <label class="f" for="eCat">Age category on race day<select class="i" id="eCat"><option>Senior (20&ndash;39)</option><option selected>Master (40&ndash;49)</option><option>Grand master (50&ndash;59)</option><option>Veteran (60+)</option></select></label>
+              <label class="f" for="eShirt">Shirt size<select class="i" id="eShirt"><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>2XL</option></select></label>
+              <label class="f" for="eMed">Medical notes <span class="hint">Seen by race medics only</span><input class="i" id="eMed" placeholder="Allergies, medication, none"></label>
+              <label class="f" for="eEmgN">Emergency contact name<input class="i" id="eEmgN" placeholder="Full name"></label>
+              <label class="f" for="eEmgC">Emergency contact number<input class="i" id="eEmgC" placeholder="082 000 0000"></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="estep" data-s="3" hidden>
+          <div class="stack g24">
+            <div class="stack g16">
+              <h3 class="d4">Your qualifying run</h3>
+              <p class="muted" style="font-size:14px;margin-top:-6px">An ultra of 50&nbsp;km or longer, finished within six months of race day. We verify it against the event's official results.</p>
+              <div class="grid c2" style="gap:14px">
+                <label class="f" for="qRace">Qualifying event<select class="i" id="qRace"><option selected>Two Oceans Ultra Marathon</option><option>Comrades Marathon</option><option>Addo Elephant Trail Run</option><option>Table Mountain Challenge</option><option>Other &mdash; I'll upload proof</option></select></label>
+                <label class="f" for="qDate">Date completed<input class="i" id="qDate" type="date" value="2027-04-03"></label>
+                <label class="f" for="qTime">Finish time<input class="i num" id="qTime" value="05:41:22"></label>
+                <label class="f" for="qNum">Race number<input class="i num" id="qNum" value="11408"></label>
+              </div>
+              <div class="note good"><span><b style="color:var(--good)">Matched.</b> Two Oceans Ultra 2027, bib 11408, 05:41:22 &mdash; found in the official results. Nothing further needed.</span></div>
+            </div>
+            <hr class="hr">
+            <div class="stack g16">
+              <h3 class="d4">Nominate your volunteer</h3>
+              <p class="muted" style="font-size:14px;margin-top:-6px">Every entrant provides one person for checkpoint duty. Your entry isn't confirmed until they accept.</p>
+              <div class="grid c2" style="gap:14px">
+                <label class="f" for="vName">Volunteer name<input class="i" id="vName" placeholder="Who's coming with you?"></label>
+                <label class="f" for="vCell">Their mobile<input class="i" id="vCell" placeholder="082 000 0000"></label>
+                <label class="f" for="vCp">Preferred checkpoint<select class="i" id="vCp"><option>No preference</option><option>CP1 &mdash; Smitswinkel</option><option selected>CP2 &mdash; Red Hill</option><option>CP3 &mdash; Silvermine</option><option>CP4 &mdash; Constantia Nek</option><option>Finish &mdash; Hamilton's RFC</option></select></label>
+                <label class="f" for="vShift">Shift<select class="i" id="vShift"><option selected>Whatever's needed</option><option>Early (04:00&ndash;10:00)</option><option>Late (10:00&ndash;17:00)</option></select></label>
+              </div>
+              <p class="muted" style="font-size:12.5px">They'll get an SMS with a one-tap accept link. You can swap them out any time before the briefing.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="estep" data-s="4" hidden>
+          <div class="stack g16">
+            <h3 class="d4">Indemnity and race rules</h3>
+            <div class="panel pad raised" style="max-height:230px;overflow:auto;font-size:13.5px;line-height:1.65;color:#C3CAD7">
+              <p style="margin-bottom:10px"><b>1. Risk.</b> The route crosses Table Mountain National Park and Silvermine over exposed mountain terrain, in weather that changes without warning. I enter at my own risk and accept full responsibility for my own safety.</p>
+              <p style="margin-bottom:10px"><b>2. Experience.</b> I confirm I have substantial mountain running experience and can navigate the route in poor visibility.</p>
+              <p style="margin-bottom:10px"><b>3. Cut-offs.</b> I will retire at any checkpoint where I miss the cut-off, and I will follow any instruction from a marshal, medic or the race director.</p>
+              <p style="margin-bottom:10px"><b>4. Mandatory kit.</b> I will carry the full kit list &mdash; jacket, space blanket, charged phone, whistle, and 1&nbsp;litre of water &mdash; and accept that I'll be stopped without it.</p>
+              <p style="margin-bottom:10px"><b>5. Environment.</b> Zero tolerance on littering. Dropping anything on the route, including a gel sachet, means immediate disqualification and no future entry.</p>
+              <p><b>6. Briefing.</b> Attendance at the pre-race briefing is compulsory. No briefing, no start.</p>
+            </div>
+            <div class="stack g12">
+              <label class="opt" id="ix1"><input type="checkbox" class="ind"><span style="flex:1"><span class="ot">I accept the indemnity and race rules above</span></span></label>
+              <label class="opt" id="ix2"><input type="checkbox" class="ind"><span style="flex:1"><span class="ot">I will attend the compulsory pre-race briefing</span><span class="os">Thursday 14 October, 18:30, Hamilton's Rugby Club</span></span></label>
+              <label class="opt" id="ix3"><input type="checkbox" class="ind"><span style="flex:1"><span class="ot">I will carry the full mandatory kit list</span></span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="estep" data-s="5" hidden>
+          <div class="stack g16">
+            <h3 class="d4">Payment</h3>
+            <div class="stack g12">
+              <label class="opt sel"><input type="radio" name="pay" checked><span style="flex:1"><span class="ot">Card</span><span class="os">Visa, Mastercard &mdash; processed by PayFast</span></span></label>
+              <label class="opt"><input type="radio" name="pay"><span style="flex:1"><span class="ot">Instant EFT</span><span class="os">Capitec, FNB, Absa, Standard Bank, Nedbank</span></span></label>
+              <label class="opt"><input type="radio" name="pay"><span style="flex:1"><span class="ot">SnapScan</span><span class="os">Scan the code on the confirmation screen</span></span></label>
+            </div>
+            <div class="note">Entry fees are not refundable, but your place can be transferred to another qualified runner up to seven days before the race from your entry page.</div>
+          </div>
+        </div>
+
+        <div class="estep" data-s="6" hidden>
+          <div class="stack g24" style="text-align:center;padding-block:20px">
+            <div>
+              <svg width="56" height="56" viewBox="0 0 56 56" style="margin-inline:auto;display:block" aria-hidden="true">
+                <circle cx="28" cy="28" r="26" fill="#3DD68C1F" stroke="#3DD68C" stroke-width="2"/>
+                <path d="M17 29l8 8 15-17" fill="none" stroke="#3DD68C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="stack g8">
+              <h3 class="d3">You're in</h3>
+              <p class="muted">Entry 165 of 180 &mdash; PUFfeR 2027</p>
+            </div>
+            <div class="panel pad raised" style="max-width:330px;margin-inline:auto;width:100%">
+              <div class="eyebrow m">Your race number</div>
+              <div class="d1 num" style="color:var(--gold);font-size:64px;margin-top:8px">147</div>
+              <hr class="hr" style="margin-block:16px">
+              <div class="stack g8" style="font-size:13px;text-align:left">
+                <div class="row" style="justify-content:space-between"><span class="muted">Runner</span><span>Thandi Mokoena</span></div>
+                <div class="row" style="justify-content:space-between"><span class="muted">Licence</span><span class="num">WPA 24 118 907</span></div>
+                <div class="row" style="justify-content:space-between"><span class="muted">Qualifier</span><span class="chip good">Verified</span></div>
+                <div class="row" style="justify-content:space-between"><span class="muted">Volunteer</span><span class="chip warn">Awaiting reply</span></div>
+                <div class="row" style="justify-content:space-between"><span class="muted">Briefing</span><span>Thu 14 Oct, 18:30</span></div>
+              </div>
+            </div>
+            <p class="muted" style="font-size:13px;max-width:44ch;margin-inline:auto">Confirmation is in your inbox with the kit list, the route GPX and your checkpoint cut-offs. Bring ID to registration.</p>
+            <div class="row" style="justify-content:center;gap:10px">
+              <a class="btn btn-ghost btn-sm" href="#" data-go="volunteer">Volunteer board</a>
+              <a class="btn btn-ghost btn-sm" href="#" data-go="home">Back to the club</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="justify-content:space-between;gap:12px;margin-top:auto;padding-top:20px;border-top:1px solid var(--line1)" id="entNav">
+          <button class="btn btn-ghost btn-sm" id="entBack" disabled>Back</button>
+          <button class="btn btn-gold" id="entNext">Continue</button>
+        </div>
+      </div>
+
+      <div class="panel pad stack g16" style="position:sticky;top:96px">
+        <p class="eyebrow m">Entry summary</p>
+        <div class="stack g12" id="entSummary"></div>
+        <hr class="hr">
+        <div class="row" style="justify-content:space-between;align-items:baseline">
+          <span style="font-weight:600">Total</span>
+          <span class="d3" style="color:var(--gold)" id="entTotal">R 1 350</span>
+        </div>
+        <hr class="hr">
+        <p class="eyebrow m">Cut-offs</p>
+        <div class="stack g8" style="font-size:12.5px" id="cutoffs"></div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════ RESULTS ═══════════════ -->
+<div class="page" id="p-results">
+  <section class="band" style="padding-bottom:clamp(24px,3vw,32px)"><div class="wrap stack g24">
+    <p class="eyebrow">Results</p>
+    <h1 class="d2">PUFfeR 2026</h1>
+    <p class="lead">Saturday 17 October 2026 &mdash; 171 starters, 154 finishers. Live from the first finisher; splits recorded at every checkpoint.</p>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="wrap stack g24">
+    <div class="grid c4">
+      <div class="tile accent"><div class="k">Winner</div><div class="v num" style="font-size:30px">06:18:44</div><div class="sub">M. Ntuli &mdash; Celtic Harriers</div></div>
+      <div class="tile"><div class="k">Finishers</div><div class="v num">154<span style="font-size:20px;color:var(--mute2)">/171</span></div><div class="sub">90% completion</div></div>
+      <div class="tile"><div class="k">Median time</div><div class="v num" style="font-size:30px">09:52:10</div><div class="sub">Across all finishers</div></div>
+      <div class="tile"><div class="k">Last finisher</div><div class="v num" style="font-size:30px">13:44:02</div><div class="sub">Inside the 14 hour cut</div></div>
+    </div>
+
+    <div class="row" style="gap:12px;justify-content:space-between">
+      <label class="f" style="flex:1;min-width:240px;max-width:400px" for="resSearch">
+        <span class="hint" style="font-weight:600;color:#AEB7C6;font-size:12.5px">Find a runner</span>
+        <input class="i" id="resSearch" placeholder="Name, race number or club">
+      </label>
+      <div class="row" style="gap:8px;align-items:flex-end">
+        <select class="i" id="resCat" style="width:auto"><option value="">All categories</option><option>Senior</option><option>Master</option><option>Grand master</option><option>Veteran</option></select>
+      </div>
+    </div>
+
+    <div class="tw"><table>
+      <thead><tr><th>Pos</th><th>No.</th><th>Runner</th><th>Club</th><th>Cat</th><th>Cat pos</th><th style="text-align:right">Time</th></tr></thead>
+      <tbody id="resBody"></tbody>
+    </table></div>
+    <p class="muted" style="font-size:12.5px" id="resCount"></p>
+
+    <div class="panel pad stack g20" id="resCard">
+      <div class="row" style="justify-content:space-between;gap:16px">
+        <div class="stack g8">
+          <p class="eyebrow m">Result card</p>
+          <h3 class="d3" id="rcName">Thandi Mokoena</h3>
+          <div class="row" style="gap:7px" id="rcChips"></div>
+        </div>
+        <div style="text-align:right">
+          <div class="eyebrow m">Finish time</div>
+          <div class="d2 num" style="color:var(--gold);font-size:clamp(30px,5vw,46px)" id="rcTime">09:12:38</div>
+        </div>
+      </div>
+      <hr class="hr">
+      <p class="eyebrow m">Checkpoint splits</p>
+      <div class="tw" style="border:0;background:transparent"><table style="min-width:560px">
+        <thead><tr><th>Checkpoint</th><th>km</th><th>Elevation</th><th>Split</th><th>Elapsed</th><th style="text-align:right">Pace</th></tr></thead>
+        <tbody id="rcSplits"></tbody>
+      </table></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════ VOLUNTEER ═══════════════ -->
+<div class="page" id="p-volunteer">
+  <section class="band" style="padding-bottom:clamp(24px,3vw,32px)"><div class="wrap stack g24">
+    <p class="eyebrow">Volunteers &amp; substitutions</p>
+    <h1 class="d2">Nobody finishes<br>without a checkpoint</h1>
+    <p class="lead">Every PUFfeR entrant brings one volunteer. This board shows where they're needed, who has accepted, and which slots are still open.</p>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="wrap stack g32">
+    <div class="grid c4">
+      <div class="tile accent"><div class="k">Slots filled</div><div class="v num">78<span style="font-size:20px;color:var(--mute2)">/96</span></div><div class="sub"><span class="chip warn">18 open</span></div></div>
+      <div class="tile"><div class="k">Accepted</div><div class="v num">71</div><div class="sub">7 invitations pending</div></div>
+      <div class="tile"><div class="k">Entries blocked</div><div class="v num" style="color:var(--warn)">13</div><div class="sub">No volunteer nominated yet</div></div>
+      <div class="tile"><div class="k">Transfers open</div><div class="v num">4</div><div class="sub">Closes 9 Oct</div></div>
+    </div>
+
+    <div>
+      <div class="sec-head" style="margin-bottom:20px"><div><h2 class="d3">Checkpoint board</h2></div>
+      <span class="muted" style="font-size:13px">Click a checkpoint to take a slot</span></div>
+      <div class="grid c3" id="cpBoard"></div>
+    </div>
+
+    <hr class="hr">
+
+    <div class="grid c2" style="gap:clamp(24px,3vw,40px);align-items:start">
+      <div class="stack g16">
+        <h2 class="d3">Substitutions</h2>
+        <p class="lead">An injured entrant can hand their place to another qualified runner up to seven days before the race. The incoming runner re-enters their own licence, qualifier and indemnity &mdash; nothing is inherited.</p>
+        <div class="note">Entry fees move with the place. The two runners settle payment between themselves; the club doesn't refund or re-charge.</div>
+      </div>
+      <div class="panel pad stack g16">
+        <p class="eyebrow m">Pending transfer requests</p>
+        <div id="subList"></div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════ ADMIN ═══════════════ -->
+<div class="page" id="p-admin">
+  <section class="band" style="padding-bottom:clamp(24px,3vw,32px)"><div class="wrap">
+    <div class="row" style="justify-content:space-between;gap:16px;align-items:flex-end">
+      <div class="stack g12">
+        <p class="eyebrow">Organiser console</p>
+        <h1 class="d2">PUFfeR 2027</h1>
+        <div class="row" style="gap:7px"><span class="chip good"><span class="dot"></span>Entries open</span><span class="chip">21 days to close</span><span class="chip">Race day 16 Oct 2027</span></div>
+      </div>
+      <div class="row" style="gap:8px">
+        <button class="btn btn-ghost btn-sm" id="admExport">Export entrants</button>
+        <a class="btn btn-gold btn-sm" href="#" data-go="volunteer">Volunteer board</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band" style="padding-top:0"><div class="wrap stack g32">
+    <div class="grid c4">
+      <div class="tile accent"><div class="k">Entries</div><div class="v num">164<span style="font-size:20px;color:var(--mute2)">/180</span></div><div class="sub"><div class="bar" style="flex:1"><i style="width:91%"></i></div></div></div>
+      <div class="tile"><div class="k">Collected</div><div class="v num">R 147k</div><div class="sub"><span style="color:var(--good)">&#9650; R 22 000</span> in 7 days</div></div>
+      <div class="tile"><div class="k">Unpaid entries</div><div class="v num" style="color:var(--warn)">9</div><div class="sub">R 12 150 outstanding</div></div>
+      <div class="tile"><div class="k">Qualifiers to verify</div><div class="v num" style="color:var(--crit)">13</div><div class="sub">Oldest waiting 6 days</div></div>
+    </div>
+
+    <div class="grid c2" style="gap:clamp(20px,2.5vw,28px);align-items:start">
+      <div class="panel pad stack g20">
+        <div class="row" style="justify-content:space-between"><h3 class="d4">Entries over time</h3><span class="chip mute">Last 12 weeks</span></div>
+        <svg viewBox="0 0 520 190" style="width:100%;height:auto" role="img" aria-label="Cumulative entries rising from 12 in week 1 to 164 in week 12, against a cap of 180">
+          <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2CE00" stop-opacity=".28"/><stop offset="1" stop-color="#F2CE00" stop-opacity="0"/></linearGradient></defs>
+          <line x1="44" y1="22" x2="514" y2="22" stroke="#263144" stroke-width="1" stroke-dasharray="3 4"/>
+          <text x="40" y="26" fill="#8D97AB" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="end">180</text>
+          <line x1="44" y1="78" x2="514" y2="78" stroke="#263144" stroke-width="1"/>
+          <text x="40" y="82" fill="#8D97AB" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="end">120</text>
+          <line x1="44" y1="134" x2="514" y2="134" stroke="#263144" stroke-width="1"/>
+          <text x="40" y="138" fill="#8D97AB" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="end">60</text>
+          <line x1="44" y1="160" x2="514" y2="160" stroke="#31405A" stroke-width="1"/>
+          <text x="40" y="164" fill="#8D97AB" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="end">0</text>
+          <path fill="url(#ag)" d="M44,155 87,148 129,139 172,126 215,112 258,98 300,84 343,71 386,58 429,44 472,34 514,27 L514,160 L44,160 Z"/>
+          <path fill="none" stroke="#F2CE00" stroke-width="2.4" stroke-linejoin="round" d="M44,155 87,148 129,139 172,126 215,112 258,98 300,84 343,71 386,58 429,44 472,34 514,27"/>
+          <circle cx="514" cy="27" r="4.5" fill="#F2CE00" stroke="#0A0D13" stroke-width="2"/>
+          <text x="514" y="182" fill="#8D97AB" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="end">now &mdash; 164</text>
+          <text x="44" y="182" fill="#8D97AB" font-family="IBM Plex Mono, monospace" font-size="10">Jul</text>
+        </svg>
+        <p class="muted" style="font-size:12.5px">At the current rate the cap is reached around 8 October, two weeks before entries were due to close.</p>
+      </div>
+
+      <div class="panel pad stack g20">
+        <h3 class="d4">Entry mix</h3>
+        <div class="stack g16" id="admMix"></div>
+        <hr class="hr">
+        <h3 class="d4">Entry status</h3>
+        <div class="stack g12" id="admStatus"></div>
+      </div>
+    </div>
+
+    <div class="stack g16">
+      <div class="row" style="justify-content:space-between;gap:12px">
+        <h3 class="d4">Entrants</h3>
+        <div class="row" style="gap:8px">
+          <input class="i" id="admSearch" placeholder="Search name, number or club" style="width:240px">
+          <select class="i" id="admFilter" style="width:auto"><option value="">All statuses</option><option>Confirmed</option><option>Unpaid</option><option>Qualifier pending</option><option>No volunteer</option></select>
+        </div>
+      </div>
+      <div class="tw"><table>
+        <thead><tr><th>No.</th><th>Runner</th><th>Club</th><th>Variant</th><th>Qualifier</th><th>Volunteer</th><th>Payment</th><th style="text-align:right">Check-in</th></tr></thead>
+        <tbody id="admBody"></tbody>
+      </table></div>
+      <p class="muted" style="font-size:12.5px" id="admCount"></p>
+    </div>
+
+    <div class="panel pad stack g16">
+      <div class="row" style="justify-content:space-between"><h3 class="d4">Race-day check-in</h3><span class="chip gold">Registration desk</span></div>
+      <div class="grid c3" style="gap:20px">
+        <div class="stack g8"><div class="eyebrow m">Checked in</div><div class="d3 num">112<span style="font-size:18px;color:var(--mute2)">/164</span></div><div class="bar"><i class="g" style="width:68%"></i></div></div>
+        <div class="stack g8"><div class="eyebrow m">Kit check passed</div><div class="d3 num">104<span style="font-size:18px;color:var(--mute2)">/112</span></div><div class="bar"><i style="width:93%"></i></div></div>
+        <div class="stack g8"><div class="eyebrow m">Briefing attended</div><div class="d3 num">158<span style="font-size:18px;color:var(--mute2)">/164</span></div><div class="bar"><i class="w" style="width:96%"></i></div></div>
+      </div>
+      <div class="note red"><span><b style="color:#FF8B87">6 entrants missed the briefing.</b> Under race rules they cannot start. Flagged on the check-in list so the desk stops them before a number is issued.</span></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<div class="page" id="p-contact">
+  <section class="band"><div class="wrap stack g32">
+    <div class="stack g24">
+      <p class="eyebrow">Contact</p>
+      <h1 class="d2">Come and find us<br>on a Wednesday</h1>
+    </div>
+    <div class="grid c2" style="gap:clamp(24px,4vw,48px);align-items:start">
+      <div class="stack g16">
+        <div class="panel pad stack g16">
+          <p class="eyebrow m">Where we are</p>
+          <p style="font-size:17px;line-height:1.45">Fish Hoek Sports Fields<br>Nelson Road, Fish Hoek<br>Cape Town</p>
+          <hr class="hr">
+          <div class="stack g12">
+            <div><div class="eyebrow m">General enquiries</div><a href="mailto:info@fishhoekac.com" style="color:var(--gold);text-decoration:none;font-size:15px">info@fishhoekac.com</a></div>
+            <div><div class="eyebrow m">Membership</div><a href="mailto:membership@fishhoekac.com" style="color:var(--gold);text-decoration:none;font-size:15px">membership@fishhoekac.com</a></div>
+          </div>
+        </div>
+        <div class="panel pad stack g12">
+          <p class="eyebrow m">Clubhouse hours</p>
+          <div>
+            <div class="lrow"><span style="flex:1"><span class="t">Wednesday</span></span><span class="s num">18:30 &ndash; 19:30</span></div>
+            <div class="lrow"><span style="flex:1"><span class="t">Friday</span></span><span class="s num">19:00 &ndash; 20:30</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel pad stack g16">
+        <p class="eyebrow m">Send us a message</p>
+        <div class="grid c2" style="gap:14px">
+          <label class="f" for="cF">First name<input class="i" id="cF"></label>
+          <label class="f" for="cL">Surname<input class="i" id="cL"></label>
+          <label class="f" for="cE">Email<input class="i" id="cE" type="email"></label>
+          <label class="f" for="cP">Contact number<input class="i" id="cP"></label>
+        </div>
+        <label class="f" for="cT">What's this about?<select class="i" id="cT">
+          <option>New membership request</option><option>Renewal of existing membership</option>
+          <option>Change to membership</option><option>Race entry query</option>
+          <option>Volunteering</option><option>Other</option>
+        </select></label>
+        <label class="f" for="cM">Message<textarea class="i" id="cM" rows="5"></textarea></label>
+        <button class="btn btn-gold" style="justify-content:center" id="cSend">Send message</button>
+        <div class="note good" id="cDone" hidden>Thanks &mdash; that's with the committee. Someone will come back to you within two days.</div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+</main>
+
+<footer class="site"><div class="wrap">
+  <div class="grid c4" style="gap:32px">
+    <div class="fcol" style="grid-column:span 1">
+      <div class="brand" style="margin-bottom:14px">
+        <svg width="26" height="31" viewBox="0 0 30 36" aria-hidden="true">
+          <path d="M1.2 1.2h27.6v20.5c0 7.2-6.6 11.2-13.8 13.1C7.8 32.9 1.2 28.9 1.2 21.7Z" fill="#141C2B" stroke="#F2CE00" stroke-width="2"/>
+          <path d="M4.4 4.4h21.2v6.4H4.4Z" fill="#F2CE00"/><path d="M4.4 13.6h21.2v5.2H4.4Z" fill="#D8231E"/>
+          <path d="M5 26.5c3.4-4 6.2-4 9 0 2.8 4 5.6 4 9 0" fill="none" stroke="#F2CE00" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="nm">Fish Hoek AC<small>Est. 1977</small></span>
+      </div>
+      <p class="muted" style="font-size:13px">Fish Hoek Sports Fields<br>Nelson Road, Fish Hoek</p>
+    </div>
+    <div class="fcol"><h4>Club</h4><div>
+      <a href="#" data-go="about">About FHAC</a><a href="#" data-go="about">Club standards</a>
+      <a href="#" data-go="join">Membership</a><a href="#" data-go="contact">Contact</a>
+    </div></div>
+    <div class="fcol"><h4>Racing</h4><div>
+      <a href="#" data-go="races">Races &amp; runs</a><a href="#" data-go="enter">Enter a race</a>
+      <a href="#" data-go="results">Results</a><a href="#" data-go="volunteer">Volunteer</a>
+    </div></div>
+    <div class="fcol"><h4>Members</h4><div>
+      <a href="#" data-go="admin">Organiser console</a><a href="#" data-go="join">Renew membership</a>
+      <a href="#" data-go="results">My results</a><a href="#" data-go="contact">Business directory</a>
+    </div></div>
+  </div>
+  <div class="fbot">
+    <span>&copy; 2026 Fish Hoek Athletic Club &middot; Affiliated to Western Province Athletics</span>
+    <span>Concept prototype by iHubSA &mdash; not the live club site</span>
+  </div>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ─── data ─── */
+var RACES=[
+ {id:"puffer",name:"PUFfeR",full:"Peninsula Ultra Fun Run",km:"65 km",since:"Since 1995",
+  tag:"Trail ultra",status:["warn","16 places left"],
+  blurb:"Cape Point to the Waterfront over every mountain in between, summiting Table Mountain via Maclear's Beacon. Capped at 180 pre-qualified runners.",
+  long:"Described by the people who run it as running in heaven while feeling like hell. The route leaves Cape Point, crosses the peninsula reserves, climbs Table Mountain by Maclear's Beacon and drops to Hamilton's Rugby Club near the Waterfront. Two variants exist: Tougher PUFfeR runs it out and back, RuFfeR PUFfeR strips out what little road there is. Entry is conditional — a 50 km ultra finished in the last six months, real mountain experience, a nominated checkpoint volunteer, compulsory briefing attendance, and zero tolerance on littering.",
+  prof:"M0,60 8,52 20,56 32,44 44,50 56,54 68,40 80,34 92,46 104,26 116,15 128,32 140,49 152,25 164,10 176,6 188,26 196,46 200,61",
+  facts:[["Distance","65 km"],["Ascent","2 900 m"],["Cut-off","14 hours"],["Field","180 runners"]]},
+ {id:"redhill",name:"Red Hill",full:"Red Hill Classic",km:"36 km",since:"Nearly 50 years",
+  tag:"Road / training",status:["good","Entries open"],
+  blurb:"The club's oldest training run, over Red Hill and back. An optional 42 km extension turns it into a full marathon.",
+  long:"The route has barely changed in five decades — the one exception being 2008, when a veld fire forced an emergency reroute. It remains the club's benchmark long training run in the build to Two Oceans, and it mattered enough that the club redesigned its logo around it.",
+  prof:"M0,58 14,54 28,40 42,22 56,14 70,18 84,30 98,38 112,30 126,20 140,26 154,40 168,50 182,56 200,60",
+  facts:[["Distance","36 km"],["Option","42.2 km"],["Ascent","640 m"],["Started","1970s"]]},
+ {id:"4hills",name:"4 Hills",full:"4 Hills for Lindsay",km:"56 km",since:"Since 2006",
+  tag:"Commemorative",status:["mute","Invitation"],
+  blurb:"Four climbs, run in memory of Dr Lindsay Weight, who loved long training days with the club.",
+  long:"Established after Dr Lindsay Weight's death in 2006, this run celebrates exactly what she loved — a very long day out with club mates, taking in four separate climbs. It is a commemorative run rather than a race, and it is run at the pace of the group.",
+  prof:"M0,58 12,40 24,18 36,40 50,56 62,38 74,16 86,38 100,56 112,38 124,14 136,36 150,55 162,36 174,12 186,34 200,58",
+  facts:[["Distance","56 km"],["Climbs","4"],["Format","Group run"],["Since","2006"]]},
+ {id:"port",name:"Port Run",full:"The Port Run",km:"15 km",since:"Since 1997",
+  tag:"Tradition",status:["good","All welcome"],
+  blurb:"The pre-Comrades taper run, finishing at the clubhouse for breakfast. It got its name honestly.",
+  long:"Since 1997, the last easy run before Comrades. Roughly 15 km, then everyone back to the clubhouse for breakfast. The name comes from a particularly foul, stormy taper run when the group stopped for a glass of port — and then kept doing it every year since.",
+  prof:"M0,52 20,50 40,54 60,48 80,44 100,36 120,42 140,50 160,52 180,54 200,53",
+  facts:[["Distance","~15 km",""],["Timing","Pre-Comrades"],["Finish","Breakfast"],["Since","1997"]]}
+];
+
+var MEMBERS=[
+ {id:"family",name:"Family",price:500,sub:"A couple, their children under 18, and any full-time student in the same household."},
+ {id:"single",name:"Single / Social",price:350,sub:"One runner, no dependants. Social members get the same club access without racing."},
+ {id:"student",name:"Student",price:135,sub:"Full-time students. Proof of registration needed."},
+ {id:"junior",name:"Junior",price:50,sub:"Under 20 and not on a family membership. ID or birth certificate required for the WPA licence."}
+];
+
+var EVENTS=[
+ {id:"puffer",t:"PUFfeR",s:"The original route — Cape Point to Hamilton's Rugby Club, 65 km.",p:1350},
+ {id:"tougher",t:"Tougher PUFfeR",s:"Out and back. 130 km. Fifteen entries only, by application.",p:1850},
+ {id:"ruffer",t:"RuFfeR PUFfeR",s:"Minimal road — the trail-purist variant over the same terrain.",p:1350}
+];
+
+var CUTOFFS=[["CP1 Smitswinkel","12 km","07:30"],["CP2 Red Hill","24 km","09:45"],["CP3 Silvermine","38 km","12:30"],["CP4 Constantia Nek","48 km","15:00"],["Maclear's Beacon","56 km","17:30"],["Finish","65 km","19:00"]];
+
+var RESULTS=[
+ [1,"402","Musa Ntuli","Celtic Harriers","Senior",1,"06:18:44"],
+ [2,"117","Pieter van Wyk","Atlantic Athletic","Master",1,"06:31:09"],
+ [3,"288","Sipho Dlamini","Nedbank RC","Senior",2,"06:44:51"],
+ [4,"063","Anja Kruger","Fish Hoek AC","Senior",1,"06:58:27"],
+ [5,"341","Dave Holgate","Fish Hoek AC","Master",2,"07:02:15"],
+ [6,"199","Lerato Mabaso","Bellville AC","Senior",3,"07:19:40"],
+ [7,"224","Gerhard Smit","Durbanville AC","Grand master",1,"07:33:58"],
+ [8,"078","Claire Oliver","Fish Hoek AC","Master",3,"07:41:12"],
+ [14,"147","Thandi Mokoena","Fish Hoek AC","Master",5,"09:12:38"],
+ [22,"310","Russell Mackintosh","Fish Hoek AC","Grand master",4,"09:48:33"],
+ [31,"095","Bert Thompson","Fish Hoek AC","Veteran",1,"10:22:07"],
+ [48,"256","Nadia Petersen","Itheko AC","Senior",9,"11:05:44"],
+ [77,"188","Johan de Villiers","Fish Hoek AC","Veteran",3,"12:14:19"],
+ [154,"401","Moira Oliver","Fish Hoek AC","Veteran",6,"13:44:02"]
+];
+
+var SPLITS=[
+ ["CP1 Smitswinkel","12","210 m","01:24:10","01:24:10","7:01/km"],
+ ["CP2 Red Hill","24","480 m","01:38:52","03:03:02","8:14/km"],
+ ["CP3 Silvermine","38","620 m","01:52:30","04:55:32","8:02/km"],
+ ["CP4 Constantia Nek","48","210 m","01:31:18","06:26:50","9:08/km"],
+ ["Maclear's Beacon","56","1 086 m","01:48:44","08:15:34","13:36/km"],
+ ["Finish — Hamilton's","65","10 m","00:57:04","09:12:38","6:20/km"]
+];
+
+var ENTRANTS=[
+ ["147","Thandi Mokoena","Fish Hoek AC","PUFfeR","ok","pend","ok","no"],
+ ["148","Rueben Adams","Atlantic Athletic","PUFfeR","ok","ok","ok","yes"],
+ ["149","Hendrik Botha","Durbanville AC","Tougher","pend","ok","ok","no"],
+ ["150","Zanele Khumalo","Itheko AC","PUFfeR","ok","ok","ok","yes"],
+ ["151","Grant Fisher","Fish Hoek AC","RuFfeR","ok","none","ok","no"],
+ ["152","Marieke Joubert","Celtic Harriers","PUFfeR","ok","ok","unpaid","no"],
+ ["153","Sibusiso Ngcobo","Nedbank RC","PUFfeR","pend","ok","ok","yes"],
+ ["154","Kate Mackintosh","Fish Hoek AC","PUFfeR","ok","ok","ok","yes"],
+ ["155","Ahmed Salie","Bellville AC","PUFfeR","ok","pend","unpaid","no"],
+ ["156","Liesl Pretorius","Fish Hoek AC","RuFfeR","ok","ok","ok","no"],
+ ["157","Tom Weight","Atlantic Athletic","PUFfeR","ok","none","ok","no"],
+ ["158","Naledi Sithole","Itheko AC","PUFfeR","ok","ok","ok","yes"]
+];
+
+var CPS=[
+ {n:"CP1 — Smitswinkel",km:"12 km",need:14,have:14,open:"04:30"},
+ {n:"CP2 — Red Hill",km:"24 km",need:18,have:15,open:"05:45"},
+ {n:"CP3 — Silvermine",km:"38 km",need:20,have:13,open:"07:15"},
+ {n:"CP4 — Constantia Nek",km:"48 km",need:16,have:12,open:"09:00"},
+ {n:"Maclear's Beacon",km:"56 km",need:10,have:10,open:"10:00"},
+ {n:"Finish — Hamilton's",km:"65 km",need:18,have:14,open:"11:30"}
+];
+
+var SUBS=[
+ ["Grant Fisher","Sarah Loubser","Achilles — 6 weeks out","Qualifier verified","good"],
+ ["Tom Weight","Neil Abrahams","Work travel","Awaiting qualifier proof","warn"],
+ ["Ahmed Salie","—","Listed, no taker yet","Open to offers","mute"],
+ ["Marieke Joubert","Ilse van Zyl","Pregnancy","Qualifier verified","good"]
+];
+
+/* ─── helpers ─── */
+function h(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function el(id){return document.getElementById(id);}
+function rands(n){return "R " + n.toLocaleString("en-ZA").replace(/,/g," ");}
+
+/* ─── router ─── */
+var PAGES=["home","about","races","join","enter","results","volunteer","admin","contact"];
+function go(p){
+  if(PAGES.indexOf(p)<0) p="home";
+  PAGES.forEach(function(k){ var n=el("p-"+k); if(n) n.classList.toggle("on",k===p); });
+  Array.prototype.forEach.call(document.querySelectorAll("#nav button"),function(b){
+    if(b.dataset.go===p) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
+  });
+  window.scrollTo({top:0,behavior:"instant"});
+}
+document.addEventListener("click",function(e){
+  var t=e.target.closest("[data-go]");
+  if(!t) return;
+  e.preventDefault();
+  go(t.dataset.go);
+});
+
+/* ─── home: race cards ─── */
+el("raceCards").innerHTML=RACES.map(function(r){
+  return '<article class="race">'
+   +'<svg class="prof" viewBox="0 0 200 70" preserveAspectRatio="none" aria-hidden="true">'
+   +'<path class="f" d="'+r.prof+' L200,70 L0,70 Z"/><path class="s" d="'+r.prof+'"/></svg>'
+   +'<div class="body"><h3>'+h(r.name)+'</h3>'
+   +'<div class="meta"><span class="chip gold">'+h(r.km)+'</span><span class="chip">'+h(r.tag)+'</span></div>'
+   +'<p>'+h(r.blurb)+'</p>'
+   +'<div class="foot"><span class="chip '+r.status[0]+'">'+h(r.status[1])+'</span>'
+   +'<button class="btn btn-ghost btn-sm" data-go="races">Detail</button></div></div></article>';
+}).join("");
+
+/* ─── home: membership cards ─── */
+el("memCards").innerHTML=MEMBERS.map(function(m){
+  return '<div class="tile"><div class="k">'+h(m.name)+'</div>'
+   +'<div class="v num" style="color:var(--gold)">'+rands(m.price)+'</div>'
+   +'<div class="sub" style="display:block;line-height:1.5">'+h(m.sub)+'</div></div>';
+}).join("");
+
+/* ─── races page ─── */
+el("raceLong").innerHTML=RACES.map(function(r){
+  return '<div class="panel" style="overflow:hidden">'
+   +'<svg class="prof" viewBox="0 0 200 70" preserveAspectRatio="none" style="display:block;width:100%;height:96px;background:linear-gradient(180deg,#0E1420,#141C2B);border-bottom:1px solid var(--line1)" aria-hidden="true">'
+   +'<path fill="#F2CE0022" d="'+r.prof+' L200,70 L0,70 Z"/><path fill="none" stroke="#F2CE00" stroke-width="1.6" vector-effect="non-scaling-stroke" d="'+r.prof+'"/></svg>'
+   +'<div style="padding:clamp(20px,3vw,30px)">'
+   +'<div class="row" style="justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px">'
+   +'<div><p class="eyebrow m">'+h(r.since)+'</p><h3 class="d3" style="margin-top:6px">'+h(r.full)+'</h3></div>'
+   +'<span class="chip '+r.status[0]+'">'+h(r.status[1])+'</span></div>'
+   +'<p class="lead" style="font-size:15px">'+h(r.long)+'</p>'
+   +'<div class="grid c4" style="gap:12px;margin-top:22px">'
+   + r.facts.map(function(f){return '<div><div class="eyebrow m">'+h(f[0])+'</div><div class="num" style="font-size:19px;font-weight:600;margin-top:5px">'+h(f[1])+'</div></div>';}).join("")
+   +'</div>'
+   +'<div class="row" style="gap:10px;margin-top:22px"><button class="btn btn-gold btn-sm" data-go="enter">Enter</button>'
+   +'<button class="btn btn-ghost btn-sm" data-go="results">Past results</button></div>'
+   +'</div></div>';
+}).join("");
+
+/* ─── join page ─── */
+var memSel="single", lic=true, kit=false;
+function renderJoin(){
+  el("memOpts").innerHTML=MEMBERS.map(function(m){
+    return '<label class="opt'+(memSel===m.id?" sel":"")+'" data-mem="'+m.id+'">'
+     +'<input type="radio" name="mem"'+(memSel===m.id?" checked":"")+'>'
+     +'<span style="flex:1"><span class="ot">'+h(m.name)+'</span><span class="os">'+h(m.sub)+'</span></span>'
+     +'<span class="price">'+rands(m.price)+'</span></label>';
+  }).join("");
+  var m=MEMBERS.filter(function(x){return x.id===memSel;})[0];
+  var total=m.price+(lic?140:0)+(kit?250:0);
+  var rows=[[m.name+" membership",m.price]];
+  if(lic) rows.push(["WPA licence",140]);
+  if(kit) rows.push(["Club vest",250]);
+  el("joinSummary").innerHTML=rows.map(function(r){
+    return '<div class="row" style="justify-content:space-between;font-size:14px"><span class="muted">'+h(r[0])+'</span><span class="num">'+rands(r[1])+'</span></div>';
+  }).join("");
+  el("joinTotal").textContent=rands(total);
+  el("optLic").classList.toggle("sel",lic);
+  el("optKit").classList.toggle("sel",kit);
+}
+el("memOpts").addEventListener("click",function(e){
+  var l=e.target.closest("[data-mem]"); if(!l) return;
+  memSel=l.dataset.mem; renderJoin();
+});
+el("cbLic").addEventListener("change",function(){lic=this.checked;renderJoin();});
+el("cbKit").addEventListener("change",function(){kit=this.checked;renderJoin();});
+el("joinPay").addEventListener("click",function(){
+  el("joinDone").hidden=false; this.textContent="Payment complete"; this.disabled=true;
+});
+renderJoin();
+
+/* ─── entry flow ─── */
+var step=1, evSel="puffer";
+function renderEv(){
+  el("evOpts").innerHTML=EVENTS.map(function(v){
+    return '<label class="opt'+(evSel===v.id?" sel":"")+'" data-ev="'+v.id+'">'
+     +'<input type="radio" name="ev"'+(evSel===v.id?" checked":"")+'>'
+     +'<span style="flex:1"><span class="ot">'+h(v.t)+'</span><span class="os">'+h(v.s)+'</span></span>'
+     +'<span class="price">'+rands(v.p)+'</span></label>';
+  }).join("");
+}
+function renderEntSummary(){
+  var v=EVENTS.filter(function(x){return x.id===evSel;})[0];
+  var rows=[[v.t+" entry",v.p],["Timing chip & tracker",0],["Post-race meal",0]];
+  el("entSummary").innerHTML=rows.map(function(r){
+    return '<div class="row" style="justify-content:space-between;font-size:14px"><span class="muted">'+h(r[0])+'</span><span class="num">'+(r[1]?rands(r[1]):"Included")+'</span></div>';
+  }).join("");
+  el("entTotal").textContent=rands(v.p);
+}
+el("cutoffs").innerHTML=CUTOFFS.map(function(c){
+  return '<div class="row" style="justify-content:space-between;gap:8px"><span class="muted">'+h(c[0])+'</span>'
+   +'<span class="num" style="color:#AEB7C6">'+h(c[1])+'</span>'
+   +'<span class="num" style="color:var(--gold);min-width:44px;text-align:right">'+h(c[2])+'</span></div>';
+}).join("");
+el("evOpts").addEventListener("click",function(e){
+  var l=e.target.closest("[data-ev]"); if(!l) return;
+  evSel=l.dataset.ev; renderEv(); renderEntSummary();
+});
+function renderStep(){
+  Array.prototype.forEach.call(document.querySelectorAll(".estep"),function(n){
+    n.hidden = Number(n.dataset.s)!==step;
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("#entSteps .step"),function(n){
+    var s=Number(n.dataset.s);
+    n.classList.toggle("now",s===step);
+    n.classList.toggle("done",s<step);
+  });
+  el("entNav").hidden = step===6;
+  el("entBack").disabled = step<=1;
+  el("entNext").textContent = step===4 ? "Accept and continue" : step===5 ? "Pay R " + EVENTS.filter(function(x){return x.id===evSel;})[0].p.toLocaleString("en-ZA").replace(/,/g," ") : "Continue";
+  checkInd();
+}
+function checkInd(){
+  if(step!==4){ el("entNext").disabled=false; return; }
+  var boxes=document.querySelectorAll(".ind");
+  var all=true;
+  Array.prototype.forEach.call(boxes,function(b){ if(!b.checked) all=false; b.closest(".opt").classList.toggle("sel",b.checked); });
+  el("entNext").disabled=!all;
+}
+Array.prototype.forEach.call(document.querySelectorAll(".ind"),function(b){ b.addEventListener("change",checkInd); });
+el("entNext").addEventListener("click",function(){ if(step<6){step++;renderStep();} });
+el("entBack").addEventListener("click",function(){ if(step>1){step--;renderStep();} });
+renderEv(); renderEntSummary(); renderStep();
+
+/* ─── results ─── */
+function catPill(c){
+  var m={"Senior":"chip","Master":"chip gold","Grand master":"chip warn","Veteran":"chip red"};
+  return '<span class="'+(m[c]||"chip")+'">'+h(c)+'</span>';
+}
+function renderResults(){
+  var q=el("resSearch").value.trim().toLowerCase();
+  var c=el("resCat").value;
+  var rows=RESULTS.filter(function(r){
+    var hit = !q || (r[2]+" "+r[1]+" "+r[3]).toLowerCase().indexOf(q)>=0;
+    return hit && (!c || r[4]===c);
+  });
+  el("resBody").innerHTML = rows.length ? rows.map(function(r){
+    return '<tr class="clickable" data-no="'+r[1]+'"><td class="n" style="color:var(--gold);font-weight:600">'+r[0]+'</td>'
+     +'<td class="n">'+h(r[1])+'</td><td style="font-weight:600">'+h(r[2])+'</td><td class="muted">'+h(r[3])+'</td>'
+     +'<td>'+catPill(r[4])+'</td><td class="n">'+r[5]+'</td>'
+     +'<td class="n" style="text-align:right;font-weight:600">'+h(r[6])+'</td></tr>';
+  }).join("") : '<tr><td colspan="7" class="muted" style="text-align:center;padding:28px">No runner matches that search. Try a surname or a race number.</td></tr>';
+  el("resCount").textContent = rows.length + " of " + RESULTS.length + " finishers shown";
+}
+el("resBody").addEventListener("click",function(e){
+  var tr=e.target.closest("tr[data-no]"); if(!tr) return;
+  var r=RESULTS.filter(function(x){return x[1]===tr.dataset.no;})[0];
+  if(!r) return;
+  el("rcName").textContent=r[2];
+  el("rcTime").textContent=r[6];
+  el("rcChips").innerHTML='<span class="chip gold">No. '+h(r[1])+'</span>'+catPill(r[4])
+    +'<span class="chip">'+h(r[3])+'</span><span class="chip good">'+r[0]+' overall</span>'
+    +'<span class="chip">'+r[5]+' in category</span>';
+  el("resCard").scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+el("resSearch").addEventListener("input",renderResults);
+el("resCat").addEventListener("change",renderResults);
+el("rcSplits").innerHTML=SPLITS.map(function(s,i){
+  return '<tr><td style="font-weight:600">'+h(s[0])+'</td><td class="n muted">'+h(s[1])+'</td>'
+   +'<td class="n muted">'+h(s[2])+'</td><td class="n">'+h(s[3])+'</td>'
+   +'<td class="n" style="color:var(--gold)">'+h(s[4])+'</td>'
+   +'<td class="n" style="text-align:right;color:'+(i===4?"var(--warn)":"var(--mute)")+'">'+h(s[5])+'</td></tr>';
+}).join("");
+el("rcChips").innerHTML='<span class="chip gold">No. 147</span>'+catPill("Master")
+ +'<span class="chip">Fish Hoek AC</span><span class="chip good">14 overall</span><span class="chip">5 in category</span>';
+renderResults();
+
+/* ─── volunteer board ─── */
+el("cpBoard").innerHTML=CPS.map(function(c){
+  var pct=Math.round(c.have/c.need*100);
+  var gap=c.need-c.have;
+  var cls = gap===0 ? "good" : gap<=3 ? "warn" : "red";
+  var lbl = gap===0 ? "Full" : gap+" needed";
+  return '<div class="panel pad stack g12">'
+   +'<div class="row" style="justify-content:space-between;gap:10px"><div>'
+   +'<div class="eyebrow m">'+h(c.km)+' · opens '+h(c.open)+'</div>'
+   +'<h3 class="d4" style="margin-top:6px;font-size:19px">'+h(c.n)+'</h3></div>'
+   +'<span class="chip '+cls+'">'+h(lbl)+'</span></div>'
+   +'<div class="row" style="justify-content:space-between;font-size:13px"><span class="muted">Volunteers</span>'
+   +'<span class="num">'+c.have+' / '+c.need+'</span></div>'
+   +'<div class="bar"><i class="'+(gap===0?"g":gap<=3?"w":"r")+'" style="width:'+pct+'%"></i></div>'
+   +'<button class="btn '+(gap===0?"btn-ghost":"btn-gold")+' btn-sm" style="justify-content:center;width:100%"'+(gap===0?" disabled":"")+' data-cp="'+h(c.n)+'">'
+   +(gap===0?"No slots left":"Take a slot")+'</button></div>';
+}).join("");
+el("cpBoard").addEventListener("click",function(e){
+  var b=e.target.closest("[data-cp]"); if(!b||b.disabled) return;
+  b.textContent="Slot taken — " + b.dataset.cp.split("—")[0].trim();
+  b.classList.remove("btn-gold"); b.classList.add("btn-ghost"); b.disabled=true;
+});
+
+el("subList").innerHTML=SUBS.map(function(s){
+  return '<div class="lrow"><span style="flex:1">'
+   +'<span class="t">'+h(s[0])+' &rarr; '+h(s[1])+'</span><br>'
+   +'<span class="s">'+h(s[2])+'</span></span>'
+   +'<span class="chip '+s[4]+'">'+h(s[3])+'</span></div>';
+}).join("");
+
+/* ─── admin ─── */
+var MIX=[["PUFfeR (65 km)",128,"" ],["RuFfeR PUFfeR",24,"w"],["Tougher PUFfeR",12,"r"]];
+el("admMix").innerHTML=MIX.map(function(m){
+  return '<div class="stack g8"><div class="row" style="justify-content:space-between;font-size:13.5px">'
+   +'<span>'+h(m[0])+'</span><span class="num muted">'+m[1]+'</span></div>'
+   +'<div class="bar"><i class="'+m[2]+'" style="width:'+Math.round(m[1]/164*100)+'%"></i></div></div>';
+}).join("");
+var STAT=[["Confirmed",139,"good"],["Unpaid",9,"warn"],["Qualifier pending",13,"red"],["No volunteer",3,"mute"]];
+el("admStatus").innerHTML=STAT.map(function(s){
+  return '<div class="row" style="justify-content:space-between"><span class="chip '+s[2]+'">'+h(s[0])+'</span>'
+   +'<span class="num" style="font-weight:600">'+s[1]+'</span></div>';
+}).join("");
+
+var PILL={ok:['good','Verified'],pend:['warn','Pending'],none:['red','None'],unpaid:['warn','Unpaid'],yes:['good','Done'],no:['mute','Not yet']};
+function pill(k,over){ var p=PILL[k]; return '<span class="chip '+p[0]+'">'+h(over||p[1])+'</span>'; }
+function renderAdmin(){
+  var q=el("admSearch").value.trim().toLowerCase();
+  var f=el("admFilter").value;
+  var rows=ENTRANTS.filter(function(r){
+    var hit=!q || (r[1]+" "+r[0]+" "+r[2]).toLowerCase().indexOf(q)>=0;
+    if(!hit) return false;
+    if(f==="Unpaid") return r[6]==="unpaid";
+    if(f==="Qualifier pending") return r[4]==="pend";
+    if(f==="No volunteer") return r[5]==="none";
+    if(f==="Confirmed") return r[4]==="ok"&&r[5]==="ok"&&r[6]==="ok";
+    return true;
+  });
+  el("admBody").innerHTML = rows.length ? rows.map(function(r){
+    return '<tr><td class="n" style="color:var(--gold);font-weight:600">'+h(r[0])+'</td>'
+     +'<td style="font-weight:600">'+h(r[1])+'</td><td class="muted">'+h(r[2])+'</td>'
+     +'<td>'+h(r[3])+'</td><td>'+pill(r[4])+'</td><td>'+pill(r[5])+'</td>'
+     +'<td>'+pill(r[6],r[6]==="ok"?"Paid":null)+'</td>'
+     +'<td style="text-align:right">'+pill(r[7])+'</td></tr>';
+  }).join("") : '<tr><td colspan="8" class="muted" style="text-align:center;padding:28px">No entrants match that filter.</td></tr>';
+  el("admCount").textContent = rows.length + " of " + ENTRANTS.length + " entrants shown · 164 total in the live event";
+}
+el("admSearch").addEventListener("input",renderAdmin);
+el("admFilter").addEventListener("change",renderAdmin);
+el("admExport").addEventListener("click",function(){
+  this.textContent="Exporting 164 rows…";
+  var b=this; setTimeout(function(){ b.textContent="Export ready — entrants.csv"; },900);
+});
+renderAdmin();
+
+/* ─── contact ─── */
+el("cSend").addEventListener("click",function(){
+  el("cDone").hidden=false; this.textContent="Message sent"; this.disabled=true;
+});
+
+})();
+</script>
+</body>
+</html>
