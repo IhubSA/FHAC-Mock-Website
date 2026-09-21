@@ -7,14 +7,9 @@
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Fish Hoek AC - Concept Prototype">
 <meta property="og:description" content="Proposed website and race entry platform for Fish Hoek Athletic Club.">
+<meta property="og:image" content="images/hero.jpg">
 <meta property="og:type" content="website">
-<style>
-/* base reset (supplied by the artifact host in the hosted version) */
-html{color-scheme:dark}
-body{margin:0}
-img{max-width:100%}
-[hidden]{display:none!important}
-</style>
+<style>html{color-scheme:dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Fish Hoek AC Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,10 +113,10 @@ nav.main button[aria-current="page"]{color:var(--gold);background:var(--gold-sof
 .hero h1{margin:14px 0 0;max-width:15ch}
 .hero .lead{margin-top:20px}
 .hero .cta{margin-top:30px;gap:12px}
-.ridgekey{position:absolute;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.ridgekey{position:absolute;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#AEB7C6;background:rgba(10,13,19,.82);backdrop-filter:blur(4px);padding:7px 11px;border-radius:7px;border:1px solid var(--line1);line-height:1.5}
 .ridgekey b{display:block;color:var(--gold);font-size:11px;letter-spacing:.06em}
-.rk-a{left:var(--gut);bottom:14px}
-.rk-b{right:var(--gut);bottom:14px;text-align:right}
+.rk-a{left:var(--gut);bottom:18px}
+.rk-b{right:var(--gut);bottom:18px;text-align:right}
 @media(max-width:620px){.rk-b{display:none}}
 
 /* ---------- stat strip ---------- */
@@ -236,6 +231,24 @@ footer.site a:hover{color:var(--gold)}
 .ribbon{background:linear-gradient(90deg,#1A1608,#111825);border-bottom:1px solid var(--line1);font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--mute)}
 .ribbon .wrap{display:flex;gap:10px;align-items:center;padding-block:9px;flex-wrap:wrap}
 .ribbon b{color:var(--gold);font-weight:600}
+
+/* ---------- photography ---------- */
+.ph{position:relative;overflow:hidden;background:#0E1420}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,13,19,.10) 0%,rgba(10,13,19,.34) 46%,rgba(10,13,19,.88) 100%)}
+.figure{border-radius:10px;overflow:hidden;border:1px solid var(--line1);margin:0}
+.figure img{display:block;width:100%;height:auto}
+.race .rph{height:160px;border-bottom:1px solid var(--line1)}
+.race .rph .prof{position:absolute;left:0;right:0;bottom:-1px;z-index:2;
+  width:100%;height:54px;background:none;border-bottom:0}
+.heroimg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.heroimg img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;opacity:.46;filter:saturate(.8) contrast(1.04)}
+.heroimg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(98deg,rgba(10,13,19,.95) 0%,rgba(10,13,19,.86) 38%,rgba(10,13,19,.46) 70%,rgba(10,13,19,.74) 100%),
+             linear-gradient(180deg,rgba(10,13,19,.55) 0%,rgba(10,13,19,.08) 26%,rgba(10,13,19,.97) 100%)}
+.avatar{width:78px;height:78px;border-radius:10px;flex:0 0 auto;border:1px solid var(--line2)}
+@media(max-width:560px){.avatar{display:none}}
 </style>
 
 </head>
@@ -275,6 +288,7 @@ footer.site a:hover{color:var(--gold)}
 <div class="page on" id="p-home">
 
   <div class="hero">
+    <div class="heroimg"><img src="images/hero.jpg" alt="Fish Hoek AC members in club kit gathered before the start of a race"></div>
     <div class="wrap">
       <p class="eyebrow">Fish Hoek Athletic Club &middot; Western Province Athletics</p>
       <h1 class="d1">From the<br>valley to<br>the mountain</h1>
@@ -317,6 +331,9 @@ footer.site a:hover{color:var(--gold)}
           <a class="btn btn-ghost btn-sm" href="#" data-go="contact">Find the club</a>
           <a class="btn btn-ghost btn-sm" href="#" data-go="races">See all runs</a>
         </div>
+        <figure class="figure">
+          <img src="images/club-family.jpg" alt="Club members running together through Fish Hoek, one pushing a child in a running buggy" loading="lazy">
+        </figure>
       </div>
 
       <div class="panel pad stack g16">
@@ -417,6 +434,9 @@ footer.site a:hover{color:var(--gold)}
         <p style="font-size:15px;color:#C3CAD7">By 1978 the club had launched the South-Easter Fun Run, the first fun run in the area. What began as a cross-country and short-distance club now covers every distance and discipline: road, trail, cross-country, walking and triathlon.</p>
       </div>
       <div class="stack g16">
+        <div class="ph figure" style="height:clamp(180px,24vw,240px)">
+          <img src="images/about.jpg" alt="A large group of members in club colours setting off on a run at first light" loading="lazy">
+        </div>
         <div class="panel pad stack g12">
           <p class="eyebrow m">Our aim</p>
           <p style="font-size:17px;line-height:1.5">&ldquo;To promote athletics as a sport with a view to the optimal development of the athletics potential residing within our community.&rdquo;</p>
@@ -511,6 +531,9 @@ footer.site a:hover{color:var(--gold)}
     <p class="eyebrow">Membership 2026/27</p>
     <h1 class="d2">Join Fish Hoek AC</h1>
     <p class="lead">Membership runs to the end of the club year. Pick a category, add a WPA licence if you'll be racing, and pay online &mdash; no more catching the membership officer on a Wednesday evening.</p>
+    <div class="ph figure" style="height:clamp(180px,24vw,250px)">
+      <img src="images/join.jpg" alt="Three club members celebrating as they run a mountain pass in club vests" loading="lazy">
+    </div>
   </div></section>
 
   <section class="band" style="padding-top:0"><div class="wrap">
@@ -535,7 +558,7 @@ footer.site a:hover{color:var(--gold)}
           </label>
           <label class="opt" id="optKit">
             <input type="checkbox" id="cbKit">
-            <span style="flex:1"><span class="ot">Club vest</span><span class="os">Gold and red. Sizing on Wednesday nights at the clubhouse.</span></span>
+            <span style="flex:1"><span class="ot">Club vest</span><span class="os">Club gold with black and white stripes. Sizing on Wednesday nights at the clubhouse.</span></span>
             <span class="price">R 250</span>
           </label>
         </div>
@@ -776,10 +799,13 @@ footer.site a:hover{color:var(--gold)}
 
     <div class="panel pad stack g20" id="resCard">
       <div class="row" style="justify-content:space-between;gap:16px">
+        <div class="row" style="gap:16px;align-items:center">
+        <div class="ph avatar"><img src="images/finisher.jpg" alt="A club runner at the finish with his medal" loading="lazy"></div>
         <div class="stack g8">
           <p class="eyebrow m">Result card</p>
           <h3 class="d3" id="rcName">Thandi Mokoena</h3>
           <div class="row" style="gap:7px" id="rcChips"></div>
+        </div>
         </div>
         <div style="text-align:right">
           <div class="eyebrow m">Finish time</div>
@@ -994,7 +1020,7 @@ footer.site a:hover{color:var(--gold)}
   </div>
   <div class="fbot">
     <span>&copy; 2026 Fish Hoek Athletic Club &middot; Affiliated to Western Province Athletics</span>
-    <span>Concept prototype by iHubSA &mdash; not the live club site</span>
+    <span>Photographs supplied by the club &middot; Concept prototype by iHubSA &mdash; not the live club site</span>
   </div>
 </div></footer>
 
@@ -1004,25 +1030,25 @@ footer.site a:hover{color:var(--gold)}
 
 /* ─── data ─── */
 var RACES=[
- {id:"puffer",name:"PUFfeR",full:"Peninsula Ultra Fun Run",km:"65 km",since:"Since 1995",
+ {id:"puffer",img:"images/race-puffer.jpg",alt:"A runner on the trail beneath a rock overhang high on the Peninsula",name:"PUFfeR",full:"Peninsula Ultra Fun Run",km:"65 km",since:"Since 1995",
   tag:"Trail ultra",status:["warn","16 places left"],
   blurb:"Cape Point to the Waterfront over every mountain in between, summiting Table Mountain via Maclear's Beacon. Capped at 180 pre-qualified runners.",
   long:"Described by the people who run it as running in heaven while feeling like hell. The route leaves Cape Point, crosses the peninsula reserves, climbs Table Mountain by Maclear's Beacon and drops to Hamilton's Rugby Club near the Waterfront. Two variants exist: Tougher PUFfeR runs it out and back, RuFfeR PUFfeR strips out what little road there is. Entry is conditional — a 50 km ultra finished in the last six months, real mountain experience, a nominated checkpoint volunteer, compulsory briefing attendance, and zero tolerance on littering.",
   prof:"M0,60 8,52 20,56 32,44 44,50 56,54 68,40 80,34 92,46 104,26 116,15 128,32 140,49 152,25 164,10 176,6 188,26 196,46 200,61",
   facts:[["Distance","65 km"],["Ascent","2 900 m"],["Cut-off","14 hours"],["Field","180 runners"]]},
- {id:"redhill",name:"Red Hill",full:"Red Hill Classic",km:"36 km",since:"Nearly 50 years",
+ {id:"redhill",img:"images/race-redhill.jpg",alt:"Four club runners climbing the pass in gold and striped club vests",name:"Red Hill",full:"Red Hill Classic",km:"36 km",since:"Nearly 50 years",
   tag:"Road / training",status:["good","Entries open"],
   blurb:"The club's oldest training run, over Red Hill and back. An optional 42 km extension turns it into a full marathon.",
   long:"The route has barely changed in five decades — the one exception being 2008, when a veld fire forced an emergency reroute. It remains the club's benchmark long training run in the build to Two Oceans, and it mattered enough that the club redesigned its logo around it.",
   prof:"M0,58 14,54 28,40 42,22 56,14 70,18 84,30 98,38 112,30 126,20 140,26 154,40 168,50 182,56 200,60",
   facts:[["Distance","36 km"],["Option","42.2 km"],["Ascent","640 m"],["Started","1970s"]]},
- {id:"4hills",name:"4 Hills",full:"4 Hills for Lindsay",km:"56 km",since:"Since 2006",
+ {id:"4hills",img:"images/race-4hills.jpg",alt:"Three club members with arms raised on a mountain pass road",name:"4 Hills",full:"4 Hills for Lindsay",km:"56 km",since:"Since 2006",
   tag:"Commemorative",status:["mute","Invitation"],
   blurb:"Four climbs, run in memory of Dr Lindsay Weight, who loved long training days with the club.",
   long:"Established after Dr Lindsay Weight's death in 2006, this run celebrates exactly what she loved — a very long day out with club mates, taking in four separate climbs. It is a commemorative run rather than a race, and it is run at the pace of the group.",
   prof:"M0,58 12,40 24,18 36,40 50,56 62,38 74,16 86,38 100,56 112,38 124,14 136,36 150,55 162,36 174,12 186,34 200,58",
   facts:[["Distance","56 km"],["Climbs","4"],["Format","Group run"],["Since","2006"]]},
- {id:"port",name:"Port Run",full:"The Port Run",km:"15 km",since:"Since 1997",
+ {id:"port",img:"images/race-port.jpg",alt:"A large group of members setting off together at first light",name:"Port Run",full:"The Port Run",km:"15 km",since:"Since 1997",
   tag:"Tradition",status:["good","All welcome"],
   blurb:"The pre-Comrades taper run, finishing at the clubhouse for breakfast. It got its name honestly.",
   long:"Since 1997, the last easy run before Comrades. Roughly 15 km, then everyone back to the clubhouse for breakfast. The name comes from a particularly foul, stormy taper run when the group stopped for a glass of port — and then kept doing it every year since.",
@@ -1127,8 +1153,9 @@ document.addEventListener("click",function(e){
 /* ─── home: race cards ─── */
 el("raceCards").innerHTML=RACES.map(function(r){
   return '<article class="race">'
+   +'<div class="ph rph"><img src="'+r.img+'" alt="'+h(r.alt)+'" loading="lazy">'
    +'<svg class="prof" viewBox="0 0 200 70" preserveAspectRatio="none" aria-hidden="true">'
-   +'<path class="f" d="'+r.prof+' L200,70 L0,70 Z"/><path class="s" d="'+r.prof+'"/></svg>'
+   +'<path class="f" d="'+r.prof+' L200,70 L0,70 Z"/><path class="s" d="'+r.prof+'"/></svg></div>'
    +'<div class="body"><h3>'+h(r.name)+'</h3>'
    +'<div class="meta"><span class="chip gold">'+h(r.km)+'</span><span class="chip">'+h(r.tag)+'</span></div>'
    +'<p>'+h(r.blurb)+'</p>'
@@ -1146,8 +1173,10 @@ el("memCards").innerHTML=MEMBERS.map(function(m){
 /* ─── races page ─── */
 el("raceLong").innerHTML=RACES.map(function(r){
   return '<div class="panel" style="overflow:hidden">'
-   +'<svg class="prof" viewBox="0 0 200 70" preserveAspectRatio="none" style="display:block;width:100%;height:96px;background:linear-gradient(180deg,#0E1420,#141C2B);border-bottom:1px solid var(--line1)" aria-hidden="true">'
-   +'<path fill="#F2CE0022" d="'+r.prof+' L200,70 L0,70 Z"/><path fill="none" stroke="#F2CE00" stroke-width="1.6" vector-effect="non-scaling-stroke" d="'+r.prof+'"/></svg>'
+   +'<div class="ph" style="height:clamp(190px,26vw,270px);border-bottom:1px solid var(--line1)">'
+   +'<img src="'+r.img+'" alt="'+h(r.alt)+'" loading="lazy">'
+   +'<svg viewBox="0 0 200 70" preserveAspectRatio="none" style="position:absolute;left:0;right:0;bottom:-1px;width:100%;height:72px;z-index:2" aria-hidden="true">'
+   +'<path fill="#F2CE0026" d="'+r.prof+' L200,70 L0,70 Z"/><path fill="none" stroke="#F2CE00" stroke-width="1.8" vector-effect="non-scaling-stroke" d="'+r.prof+'"/></svg></div>'
    +'<div style="padding:clamp(20px,3vw,30px)">'
    +'<div class="row" style="justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px">'
    +'<div><p class="eyebrow m">'+h(r.since)+'</p><h3 class="d3" style="margin-top:6px">'+h(r.full)+'</h3></div>'
