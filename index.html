@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fish Hoek Athletic Club - concept website and race entry platform. Prepared by iHubSA.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A0D13">
 <meta property="og:title" content="Fish Hoek AC - Concept Prototype">
 <meta property="og:description" content="Proposed website and race entry platform for Fish Hoek Athletic Club.">
 <meta property="og:image" content="images/hero.jpg">
 <meta property="og:type" content="website">
-<style>html{color-scheme:dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>html{color-scheme:dark;-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Fish Hoek AC Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +60,7 @@ p{margin:0}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
 section.band{padding-block:clamp(56px,8vw,104px)}
 .stack{display:flex;flex-direction:column}
-.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
+.g8{gap:8px}.g12{gap:12px}.g20{gap:20px}.g16{gap:16px}.g24{gap:24px}.g32{gap:32px}.g48{gap:48px}
 .row{display:flex;flex-wrap:wrap;align-items:center}
 .grid{display:grid;gap:clamp(16px,2.2vw,24px)}
 .c2{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -99,7 +100,69 @@ nav.main button[aria-current="page"]{color:var(--gold);background:var(--gold-sof
 .btn-ghost:hover{background:var(--ink3)}
 .btn-sm{padding:8px 13px;font-size:13px}
 .btn:disabled{opacity:.4;cursor:not-allowed}
-@media(max-width:760px){.topin{height:58px;gap:12px}.brand .nm{font-size:16px}.topin .btn{display:none}}
+@media(max-width:1000px){.topin{gap:12px}}
+@media(max-width:560px){.topin{height:58px}.brand .nm{font-size:16px}}
+
+/* ---------- mobile navigation ---------- */
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line2);border-radius:8px;
+  width:44px;height:44px;align-items:center;justify-content:center;flex:0 0 auto;padding:0}
+.burger span{display:block;width:18px;height:2px;background:var(--chalk);position:relative;border-radius:2px}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--chalk);border-radius:2px;transition:transform .2s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.drawer{display:none}
+
+/* ---------- responsive layout helpers ---------- */
+.split{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,3vw,36px);align-items:start}
+.sticky{position:sticky;top:96px}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-end}
+.tools{display:flex;gap:8px;flex:1;min-width:0;max-width:430px;justify-content:flex-end}
+.tools .i{min-width:0}
+.tools input.i{flex:1}
+.tools select.i{flex:0 0 auto;width:auto}
+
+@media(max-width:1000px){
+  nav.main{display:none}
+  .burger{display:flex}
+  .topin > .btn{display:none}
+  .drawer{display:block;position:fixed;inset:0;z-index:80;background:var(--ink);
+    padding:calc(env(safe-area-inset-top,0px) + 78px) var(--gut) calc(env(safe-area-inset-bottom,0px) + 32px);overflow-y:auto}
+  .drawer[hidden]{display:none!important}
+  .drawer nav{display:flex;flex-direction:column}
+  .drawer nav button{background:none;border:0;border-bottom:1px solid var(--line1);text-align:left;
+    padding:17px 4px;font-size:17px;font-weight:600;color:#C3CAD7;width:100%}
+  .drawer nav button[aria-current="page"]{color:var(--gold)}
+  .drawer > .btn{margin-top:26px;width:100%;justify-content:center;padding:16px}
+  .dclose{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:var(--gut);
+    width:44px;height:44px;border:1px solid var(--line2);border-radius:8px;background:none;
+    font-size:26px;line-height:1;color:var(--chalk);padding:0}
+}
+@media(max-width:840px){
+  .split{grid-template-columns:minmax(0,1fr)}
+  .sticky{position:static}
+  .tools{max-width:none;justify-content:stretch}
+}
+@media(max-width:700px){
+  /* 16px stops iOS zooming the page when a field is focused */
+  input.i,select.i,textarea.i{font-size:16px}
+  .toolbar{align-items:stretch}
+  .toolbar > *{width:100%}
+  .hero .cta{gap:10px}
+  .hero .cta .btn{flex:1 1 140px;justify-content:center}
+  .tile .v{font-size:34px}
+  .step{padding-right:15px;font-size:12.5px}
+  .sec-head{align-items:flex-start}
+  nav.main button,.btn{min-height:44px}
+}
+@media(max-width:480px){
+  .race .rph{height:136px}
+  .opt{padding:13px;flex-wrap:wrap}
+  .opt .price{width:100%;margin-left:28px;text-align:left;margin-top:2px}
+  .d1{font-size:clamp(40px,11vw,104px)}
+  .ridgekey{font-size:9px;padding:6px 9px}
+}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;background:
@@ -188,8 +251,8 @@ input.i::placeholder{color:var(--mute2)}
 .opt:hover{border-color:var(--mute2)}
 .opt input{margin:3px 0 0;accent-color:var(--gold);flex:0 0 auto;width:16px;height:16px}
 .opt.sel{border-color:var(--gold);background:#F2CE000D}
-.opt .ot{font-weight:600;font-size:14.5px}
-.opt .os{font-size:12.5px;color:var(--mute);margin-top:3px}
+.opt .ot{display:block;font-weight:600;font-size:14.5px;line-height:1.35}
+.opt .os{display:block;font-size:12.5px;color:var(--mute);margin-top:4px;line-height:1.45}
 .opt .price{margin-left:auto;font-family:var(--mono);font-weight:600;font-size:15px;color:var(--gold);white-space:nowrap}
 
 /* stepper */
@@ -280,7 +343,23 @@ footer.site a:hover{color:var(--gold)}
     <button data-go="contact">Contact</button>
   </nav>
   <a class="btn btn-gold" href="#" data-go="enter">Enter a race</a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
 </div></header>
+
+<div class="drawer" id="drawer" hidden>
+  <button class="dclose" id="dclose" aria-label="Close menu">&times;</button>
+  <nav aria-label="Mobile">
+    <button data-go="home">Home</button>
+    <button data-go="about">About</button>
+    <button data-go="races">Races &amp; Runs</button>
+    <button data-go="join">Join</button>
+    <button data-go="results">Results</button>
+    <button data-go="volunteer">Volunteer</button>
+    <button data-go="admin">Organiser</button>
+    <button data-go="contact">Contact</button>
+  </nav>
+  <a class="btn btn-gold" href="#" data-go="enter">Enter a race</a>
+</div>
 
 <main id="main">
 
@@ -537,7 +616,7 @@ footer.site a:hover{color:var(--gold)}
   </div></section>
 
   <section class="band" style="padding-top:0"><div class="wrap">
-    <div class="grid" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,3vw,36px);align-items:start" id="joinGrid">
+    <div class="grid split" id="joinGrid">
       <div class="panel pad stack g24">
         <div>
           <p class="eyebrow m">Step 1</p>
@@ -578,7 +657,7 @@ footer.site a:hover{color:var(--gold)}
         </div>
       </div>
 
-      <div class="panel pad stack g16" style="position:sticky;top:96px">
+      <div class="panel pad stack g16 sticky">
         <p class="eyebrow m">Your membership</p>
         <div class="stack g12" id="joinSummary"></div>
         <hr class="hr">
@@ -623,7 +702,7 @@ footer.site a:hover{color:var(--gold)}
       <div class="step" data-s="5"><span class="b">5</span>Payment</div>
     </div>
 
-    <div class="grid" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,3vw,36px);align-items:start" id="entGrid">
+    <div class="grid split" id="entGrid">
       <div class="panel pad stack g24" style="min-height:440px">
 
         <div class="estep" data-s="1">
@@ -749,7 +828,7 @@ footer.site a:hover{color:var(--gold)}
         </div>
       </div>
 
-      <div class="panel pad stack g16" style="position:sticky;top:96px">
+      <div class="panel pad stack g16 sticky">
         <p class="eyebrow m">Entry summary</p>
         <div class="stack g12" id="entSummary"></div>
         <hr class="hr">
@@ -781,13 +860,13 @@ footer.site a:hover{color:var(--gold)}
       <div class="tile"><div class="k">Last finisher</div><div class="v num" style="font-size:30px">13:44:02</div><div class="sub">Inside the 14 hour cut</div></div>
     </div>
 
-    <div class="row" style="gap:12px;justify-content:space-between">
-      <label class="f" style="flex:1;min-width:240px;max-width:400px" for="resSearch">
+    <div class="toolbar">
+      <label class="f" style="flex:1;min-width:0;max-width:400px" for="resSearch">
         <span class="hint" style="font-weight:600;color:#AEB7C6;font-size:12.5px">Find a runner</span>
         <input class="i" id="resSearch" placeholder="Name, race number or club">
       </label>
       <div class="row" style="gap:8px;align-items:flex-end">
-        <select class="i" id="resCat" style="width:auto"><option value="">All categories</option><option>Senior</option><option>Master</option><option>Grand master</option><option>Veteran</option></select>
+        <select class="i" id="resCat"><option value="">All categories</option><option>Senior</option><option>Master</option><option>Grand master</option><option>Veteran</option></select>
       </div>
     </div>
 
@@ -916,11 +995,11 @@ footer.site a:hover{color:var(--gold)}
     </div>
 
     <div class="stack g16">
-      <div class="row" style="justify-content:space-between;gap:12px">
+      <div class="toolbar">
         <h3 class="d4">Entrants</h3>
-        <div class="row" style="gap:8px">
-          <input class="i" id="admSearch" placeholder="Search name, number or club" style="width:240px">
-          <select class="i" id="admFilter" style="width:auto"><option value="">All statuses</option><option>Confirmed</option><option>Unpaid</option><option>Qualifier pending</option><option>No volunteer</option></select>
+        <div class="tools">
+          <input class="i" id="admSearch" placeholder="Search name, number or club">
+          <select class="i" id="admFilter"><option value="">All statuses</option><option>Confirmed</option><option>Unpaid</option><option>Qualifier pending</option><option>No volunteer</option></select>
         </div>
       </div>
       <div class="tw"><table>
@@ -1138,7 +1217,7 @@ var PAGES=["home","about","races","join","enter","results","volunteer","admin","
 function go(p){
   if(PAGES.indexOf(p)<0) p="home";
   PAGES.forEach(function(k){ var n=el("p-"+k); if(n) n.classList.toggle("on",k===p); });
-  Array.prototype.forEach.call(document.querySelectorAll("#nav button"),function(b){
+  Array.prototype.forEach.call(document.querySelectorAll("#nav button, #drawer nav button"),function(b){
     if(b.dataset.go===p) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
   });
   window.scrollTo({top:0,behavior:"instant"});
@@ -1147,8 +1226,20 @@ document.addEventListener("click",function(e){
   var t=e.target.closest("[data-go]");
   if(!t) return;
   e.preventDefault();
+  closeDrawer();
   go(t.dataset.go);
 });
+
+/* ─── mobile drawer ─── */
+var drawer=el("drawer"), burger=el("burger");
+function openDrawer(){ drawer.hidden=false; burger.setAttribute("aria-expanded","true");
+  document.body.style.overflow="hidden"; }
+function closeDrawer(){ if(drawer.hidden) return; drawer.hidden=true;
+  burger.setAttribute("aria-expanded","false"); document.body.style.overflow=""; }
+burger.addEventListener("click",function(){ drawer.hidden?openDrawer():closeDrawer(); });
+el("dclose").addEventListener("click",closeDrawer);
+document.addEventListener("keydown",function(e){ if(e.key==="Escape") closeDrawer(); });
+window.addEventListener("resize",function(){ if(window.innerWidth>1000) closeDrawer(); });
 
 /* ─── home: race cards ─── */
 el("raceCards").innerHTML=RACES.map(function(r){
